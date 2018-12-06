@@ -1,0 +1,1 @@
+#url:www.chaindown.com/exchange-open-api(例)#接口地址:/open/api/user/account#接口说明:(get)获取行情成交记录
