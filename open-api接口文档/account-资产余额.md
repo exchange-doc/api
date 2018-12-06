@@ -1,10 +1,10 @@
-###url:www.chaindown.com/exchange-open-api(例)
+### url:www.chaindown.com/exchange-open-api(例)
 
-###接口地址:/open/api/user/account
+### 接口地址:/open/api/user/account
 
-###接口说明:(get)获取行情成交记录
+### 接口说明:(get)获取行情成交记录
 
-*该接口不进行签名校验
+* 该接口不进行签名校验
 
 |参数|	填写类型|	说明|
 |--------|--------|--------|
