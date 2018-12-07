@@ -1,4 +1,4 @@
-#目录
+# 目录
 
 ## open-api接口文档
 
@@ -27,9 +27,10 @@
 [/open/api/common/symbols(get)](https://github.com/chainup-doc/api/blob/master/open-api%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/symbols%20%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F%E6%94%AF%E6%8C%81%E7%9A%84%E6%89%80%E6%9C%89%E4%BA%A4%E6%98%93%E5%AF%B9%E5%8F%8A%E7%B2%BE%E5%BA%A6.md)	|查询系统支持的所有交易对及精度|
 [/open/api/user_balance_info(post)](https://github.com/chainup-doc/api/blob/master/open-api%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/user_balance_info-%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E8%B5%84%E4%BA%A7%E4%BB%A5%E5%8F%8A%E5%85%85%E5%80%BC%E8%AE%B0%E5%BD%95.md)	|获取用户资产以及充值记录|
 
+
 ## ws API文档
 
-* [接口调用演示（Java）](https://github.com/chainup-doc/api/blob/master/ws-api%E6%96%87%E6%A1%A3/ws%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%E7%B1%BB.md)
+* [ws测试方法（Java）](https://github.com/chainup-doc/api/blob/master/ws-api%E6%96%87%E6%A1%A3/ws%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%E7%B1%BB.md)
 
 |ws目录:|
 |----------------------|
