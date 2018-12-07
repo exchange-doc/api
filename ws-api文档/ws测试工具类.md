@@ -29,11 +29,11 @@ import org.java_websocket.handshake.ServerHandshake;                <br>
 /**                <br>
 \* @author 鲫鱼哥 DateTime:2018年11月22日 下午9:25:20                 <br>
 \* 建议使用的websocket client版本                <br>
-\* <dependency>                <br>
-\* <groupId>org.java-websocket</groupId>                <br>
-\* <artifactId>Java-WebSocket</artifactId>                <br>
-\* <version>1.3.0</version>                <br>
-\* </dependency>                <br>
+\* \<dependency\>                <br>
+\* \<groupId\>org.java-websocket\</groupId\>                <br>
+\* \<artifactId\>Java-WebSocket\</artifactId\>                <br>
+\* \<version\>1.3.0\</version\>                <br>
+\* \</dependency\>                <br>
 \*                 <br>
 */                <br>
 public class WsTest {                <br>

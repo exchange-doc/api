@@ -29,16 +29,16 @@
 
 ## ws API文档
 
-* [接口调用演示（Java）](https://github.com/1)
+* [接口调用演示（Java）](https://github.com/chainup-doc/api/blob/master/ws-api%E6%96%87%E6%A1%A3/ws%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%E7%B1%BB.md)
 
-* ws目录:
-
-[订阅-K线行情](https://github.com/1)
-[订阅-前24小时行情](https://github.com/1)
-[订阅-深度盘口（高频）](https://github.com/1)
-[订阅-深度盘口](https://github.com/1)
-[订阅-实时成交信息](https://github.com/1)
-[请求-K线历史数据](https://github.com/1)
-[请求-成交历史数据](https://github.com/1)
-[请求-首页24行情数据](https://github.com/1)
+|ws目录:|
+|----------------------|
+|[订阅-K线行情](https://github.com/chainup-doc/api/blob/master/ws-api%E6%96%87%E6%A1%A3/%E8%AE%A2%E9%98%85-K%E7%BA%BF%E8%A1%8C%E6%83%85.md)|
+|[订阅-前24小时行情](https://github.com/chainup-doc/api/blob/master/ws-api%E6%96%87%E6%A1%A3/%E8%AE%A2%E9%98%85-%E5%89%8D24%E5%B0%8F%E6%97%B6%E8%A1%8C%E6%83%85.md)|
+|[订阅-深度盘口（高频）](https://github.com/chainup-doc/api/blob/master/ws-api%E6%96%87%E6%A1%A3/%E8%AE%A2%E9%98%85-%E6%B7%B1%E5%BA%A6%E7%9B%98%E5%8F%A3%EF%BC%88%E9%AB%98%E9%A2%91%EF%BC%89.md)|
+|[订阅-深度盘口](https://github.com/chainup-doc/api/blob/master/ws-api%E6%96%87%E6%A1%A3/%E8%AE%A2%E9%98%85-%E6%B7%B1%E5%BA%A6%E7%9B%98%E5%8F%A3.md)|
+|[订阅-实时成交信息](https://github.com/chainup-doc/api/blob/master/ws-api%E6%96%87%E6%A1%A3/%E8%AE%A2%E9%98%85-%E5%AE%9E%E6%97%B6%E6%88%90%E4%BA%A4%E4%BF%A1%E6%81%AF.md)|
+|[请求-K线历史数据](https://github.com/chainup-doc/api/blob/master/ws-api%E6%96%87%E6%A1%A3/%E8%AF%B7%E6%B1%82-K%E7%BA%BF%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE.md)|
+|[请求-成交历史数据](https://github.com/chainup-doc/api/blob/master/ws-api%E6%96%87%E6%A1%A3/%E8%AF%B7%E6%B1%82-%E6%88%90%E4%BA%A4%E5%8E%86%E5%8F%B2%E6%95%B0%E6%8D%AE.md)|
+|[请求-首页24行情数据](https://github.com/chainup-doc/api/blob/master/ws-api%E6%96%87%E6%A1%A3/%E8%AF%B7%E6%B1%82-%E9%A6%96%E9%A1%B524%E8%A1%8C%E6%83%85%E6%95%B0%E6%8D%AE.md)|
 
