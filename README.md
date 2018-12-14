@@ -2,7 +2,7 @@
 
 ## open-api接口文档
 
-* [接口调用演示（Java）](https://github.com/chainup-doc/api/blob/master/open-api%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8%E6%BC%94%E7%A4%BA.md)
+* [接口调用演示（Java）](https://github.com/chainup-doc/api/blob/master/open-api%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/demo.java)
 
 * 接口目录:
 
