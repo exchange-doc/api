@@ -30,7 +30,7 @@
 
 ## ws API文档
 
-* [ws测试方法（Java）](https://github.com/chainup-doc/api/blob/master/ws-api%E6%96%87%E6%A1%A3/ws%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7%E7%B1%BB.md)
+* [ws测试方法（Java）](https://github.com/chainup-doc/api/blob/master/ws-api%E6%96%87%E6%A1%A3/demo.java)
 
 |ws目录:|
 |----------------------|
