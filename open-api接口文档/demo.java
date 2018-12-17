@@ -21,7 +21,7 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-/** 4个变量，api_key,secret_key / 
+/** 4个变量，api_key,secret_key */ 
  String api_key = "9750*****************65d1";
  String secret_key = "1c16******************2982";
 
