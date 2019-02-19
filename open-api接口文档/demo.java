@@ -49,7 +49,7 @@ public class Main {
         params.put("sign", sign);
 
 /** http请求 */
-        String resultJson = get("https://www.chaindown.com/exchange-open-api/open/api/get_trades?symbol=btcusdt", params);
+        String resultJson = get("https://www.***.com/exchange-open-api/open/api/get_trades?symbol=btcusdt", params);
         System.out.println(resultJson);
     }
 

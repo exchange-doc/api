@@ -1,6 +1,6 @@
-#  Chainup Api Docs(Chinese simplified document)
+#   Api Docs(Chinese simplified document)
 
-## 1. open-api Catalog (example：www.Chainup.com/exchange-open-api)
+## 1. open-api Catalog (example：www.***.com/exchange-open-api)
 -   [invoking demo](#open-api)
 -   [Balance of the assets](#1)
 -	[Acquire full delegation](#2)
@@ -20,7 +20,7 @@
 -	[Internal Self-Transaction Interface-(saasProper)](#16)
 -	[All Transaction Pairs and Accuracy Supported by Query System](#17)
 -	[Get user assets and recharge records](#18)
-## 2. ws-api Catalog  (example：wss://ws.Chainup.com/kline-api/ws)
+## 2. ws-api Catalog  (example：wss://ws.***.com/kline-api/ws)
 -   [invoking demo](#ws-api)
 -   [Subscription - K Line Market](#19)
 -   [Subscription - market quotations in the last 24 hours](#20)
@@ -1243,7 +1243,7 @@ Return value:
 
 ```
 
-package com.chainup.stats.action;
+package com.stats.action;
 
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -1293,7 +1293,7 @@ public class Main {
         params.put("sign", sign);
 
 /** http request */
-        String resultJson = get("https://www.Chainup.com/exchange-open-api/open/api/get_trades?symbol=btcusdt", params);
+        String resultJson = get("https://www.***.com/exchange-open-api/open/api/get_trades?symbol=btcusdt", params);
         System.out.println(resultJson);
     }
 
@@ -1459,7 +1459,7 @@ public class WsTest {
     public static void main(String[] args) {
         try {
 //wsurl 
-            String url = "wss://ws.Chainup.com/kline-api/ws";
+            String url = "wss://ws.***.com/kline-api/ws";
 //Historical data request parameters 
             String reqParam = "{"event":"req","params":{"channel":"market_btcusdt_trade_ticker","cb_id":"btcusdt","top":150}}";
 //Subscription parameters 
@@ -1471,7 +1471,7 @@ public class WsTest {
 //Subscribe to real-time data 
             wsc.send(subParam);
 
-//Thread does not end, waiting for new messages，www.Chainup.com Generally, a new deal will return in about a minute
+//Thread does not end, waiting for new messages，www.***.com Generally, a new deal will return in about a minute
             while (true) {
                 Thread.sleep(1000);
             }

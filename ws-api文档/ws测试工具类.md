@@ -41,7 +41,7 @@ public class WsTest {                <br>
 public static void main(String[] args) {                <br>
 try {                <br>
 //wsurl                <br>
-String url = "wss://ws.chaindown.com/kline-api/ws";                <br>
+String url = "wss://ws.***.com/kline-api/ws";                <br>
 //历史数据请求参数                <br>
 String reqParam = "{\"event\":\"req\",\"params\":{\"channel\":\"market_btcusdt_trade_ticker\",\"cb_id\":\"btcusdt\",\"top\":150}}";                <br>
 //订阅参数                <br>
@@ -53,7 +53,7 @@ WebSocketUtils wsc = WebSocketUtils.executeWebSocket(url, reqParam);            
 //订阅实时数据                <br>
 wsc.send(subParam);                <br>
 
-//线程不结束，等待新的消息，www.chaindown.com 一般一分钟左右会有新的成交返回                <br>
+//线程不结束，等待新的消息，www.***.com 一般一分钟左右会有新的成交返回                <br>
 while (true) {                <br>
 Thread.sleep(1000);                <br>
 }                <br>

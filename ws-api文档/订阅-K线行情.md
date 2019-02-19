@@ -1,4 +1,4 @@
-### url:wss://ws.chaindown.com/kline-api/ws(Àý)
+### url:wss://ws.***.com/kline-api/ws(Àý)
 
 ## ¶©ÔÄ-KÏßÐÐÇé
 

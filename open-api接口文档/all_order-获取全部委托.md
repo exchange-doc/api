@@ -1,4 +1,4 @@
-### url:www.chaindown.com/exchange-open-api(例)
+### url:www.***.com/exchange-open-api(例)
 
 ## 接口地址:/open/api/v2/all_order
 

@@ -40,7 +40,7 @@ public class WsTest {
     public static void main(String[] args) {
         try {
 //wsurl 
-            String url = "wss://ws.chaindown.com/kline-api/ws";
+            String url = "wss://ws.***.com/kline-api/ws";
 //历史数据请求参数 
             String reqParam = "{"event":"req","params":{"channel":"market_btcusdt_trade_ticker","cb_id":"btcusdt","top":150}}";
 //订阅参数 
@@ -52,7 +52,7 @@ public class WsTest {
 //订阅实时数据 
             wsc.send(subParam);
 
-//线程不结束，等待新的消息，www.chaindown.com 一般一分钟左右会有新的成交返回 
+//线程不结束，等待新的消息，www.***.com 一般一分钟左右会有新的成交返回 
             while (true) {
                 Thread.sleep(1000);
             }
