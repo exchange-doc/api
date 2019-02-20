@@ -2,7 +2,7 @@
 
 ## open-api接口文档
 
-* [接口调用演示（Java）](https://github.com/exchange-doc/api/blob/master/open-api%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/demo.java)
+* [接口调用演示（Java）](https://github.com/exchange-doc/api/blob/master/open-api接口文档（现货）/demo.java)
 
 * 接口目录:
 
