@@ -1,6 +1,6 @@
-#  Bikicoin官方API文档
+#  Exchange官方API文档
 
-#### Bikicoin交易所开发文档([English Docs](https://github.com/code-bikicoin/bikicoin/blob/master/api/us_en/api_doc_en.md))
+#### Exchange交易所开发文档([English Docs](https://github.com/exchange-doc/api/edit/master/api/us_en/api_doc_en.md))
 - [介绍](#Introduction)
 - [开始使用](#startToUse)
 - [API接口加密验证](#a1)
@@ -19,23 +19,23 @@
 - [业务API参考](#b5)
   - [open-api](#b6) ([Java-Demo](#open-api-java))
     -   [资产余额](#1)
-    -	[获取全部委托](#2)
-    -	[获取全部成交记录](#3)
-    -	[取消委托单](#4)
-    -	[根据币对取消全部委托单](#5)
-    -	[创建订单](#6)
-    -	[获取所有交易对行情](#7)
-    -	[获取K线数据](#8)
-    -	[获取当前行情](#9)
-    -	[获取行情成交记录](#10)
-    -	[获取各个币对的最新成交价](#11)
-    -	[查询买卖盘深度](#12)
-    -	[批量下单，同时批量撤回指定订单](#13)
-    -	[获取当前委托](#14)
-    -	[获取订单详情](#15)
-    -	[内部自成交接口-(saas专有)](#16)
-    -	[查询系统支持的所有交易对及精度](#17)
-    -	[获取用户资产以及充值记录](#18)
+    -   [获取全部委托](#2)
+    -   [获取全部成交记录](#3)
+    -   [取消委托单](#4)
+    -   [根据币对取消全部委托单](#5)
+    -   [创建订单](#6)
+    -   [获取所有交易对行情](#7)
+    -   [获取K线数据](#8)
+    -   [获取当前行情](#9)
+    -   [获取行情成交记录](#10)
+    -   [获取各个币对的最新成交价](#11)
+    -   [查询买卖盘深度](#12)
+    -   [批量下单，同时批量撤回指定订单](#13)
+    -   [获取当前委托](#14)
+    -   [获取订单详情](#15)
+    -   [内部自成交接口-(saas专有)](#16)
+    -   [查询系统支持的所有交易对及精度](#17)
+    -   [获取用户资产以及充值记录](#18)
   - [ws-api](#b7) ([Java-Demo](#ws-api-java))
     -   [订阅-K线行情](#19)
     -   [订阅-前24小时行情](#20)
@@ -51,7 +51,7 @@
 
 # <span id="Introduction">介绍</span>
 
-欢迎使用[BikiCoin](https://www.bikicoin.com/index)开发者文档
+欢迎使用[Exchange](https://www.Exchange.com/index)开发者文档
 
 本文档提供了相关API的使用方法介绍。open-api包含了资产余额，获取全部委托，获取全部成交记录等接口，ws-api则提供了K线相关功能接口。
 
@@ -72,7 +72,7 @@ REST，即Representational State Transfer的缩写，是一种流行的互联网
 # <span id="a1">API接口加密验证</span>
 
 ## <span id="a2">生成API Key</span>
-在对任何请求进行签名之前，您必须通过 [BikiCoin 网站](https://www.bikicoin.com/index)【用户中心】-【API】创建一个API key。 创建key后，您将获得3个必须记住的信息：
+在对任何请求进行签名之前，您必须通过 [Exchange 网站](https://www.Exchange.com/index)【用户中心】-【API】创建一个API key。 创建key后，您将获得3个必须记住的信息：
 
 - API Key
  
@@ -101,7 +101,7 @@ ACCESS-SIGN的请求头是对 timestamp + method + requestPath + "?" + queryStri
 **例如：对于如下的请求参数进行签名**
 
 ```
-curl "https://api.bikicoin.com/api/v1/spot/ccex/orders?limit=100"   
+curl "https://api.Exchange.com/api/v1/spot/ccex/orders?limit=100"   
 ```
 - 获取获取深度信息，以 LTC-BTC 币对为例
 
@@ -147,7 +147,7 @@ Signature = base64.encode(Signature.digest())
 
 ## <span id="a6">请求交互</span>
 
-REST访问的根URL：``` https://api.bikicoin.com ```
+REST访问的根URL：``` https://api.Exchange.com ```
 
 ###  <span id="a7">请求</span>
 所有请求基于Https协议，请求头信息中Content-Type 需要统一设置为:'application/json’。
@@ -229,19 +229,19 @@ REST API
 1. 接口地址: /open/api/user/account
 2. 接口说明: (get请求)资产余额
 
-|参数|	填写类型|	说明|
+|参数|    填写类型|   说明|
 |--------|--------|--------|
-|api_key|	必填|	api_key|
-|time|	必填|	时间戳|
-|sign|	必填|	签名|
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sign|  必填| 签名|
 
 返回值:
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |--------|--------|--------|
-|code|	0|	 |
-|msg|	"suc"|	code>0失败|
-|data|	{<br>"total_asset":432323.23,<br>"coin_list":[<br>{"coin":"btc","normal":32323.233,"locked":32323.233,"btcValuatin":112.33},<br>{"coin":"ltc","normal":32323.233,"locked":32323.233,"btcValuatin":112.33},<br>{"coin":"bch","normal":32323.233,"locked":32323.233,"btcValuatin":112.33},<br>]<br>}<br>|total_asset:总资产<br>normal:余额账户<br>locked：冻结账户<br>btcValuatin：BTC估值|
+|code|  0|   |
+|msg|   "suc"|  code>0失败|
+|data|  {<br>"total_asset":432323.23,<br>"coin_list":[<br>{"coin":"btc","normal":32323.233,"locked":32323.233,"btcValuatin":112.33},<br>{"coin":"ltc","normal":32323.233,"locked":32323.233,"btcValuatin":112.33},<br>{"coin":"bch","normal":32323.233,"locked":32323.233,"btcValuatin":112.33},<br>]<br>}<br>|total_asset:总资产<br>normal:余额账户<br>locked：冻结账户<br>btcValuatin：BTC估值|
 ---
 ### <span id="2">获取全部委托</span>
 
@@ -252,24 +252,24 @@ REST API
 
 * v2版本变化: 去掉了结果返回值中的tradeList成交记录,提升效率;如果需要单一订单的成交信息,可以使用 /open/api/order_info 接口单独去查
 
-|参数|	填写类型|	说明|
+|参数|    填写类型|   说明|
 |------------|--------|-----------------------------|
-|symbol|	必填|	市场标记，btcusdt，详情看下面|
-|startDate|	选填|	（新增）开始时间，精确到秒“yyyy-MM-dd mm:hh:ss”|
-|endDate|	选填|	（新增）结束时间，精确到秒“yyyy-MM-dd mm:hh:ss”|
-|pageSize|	选填|	页面大小|
-|page|	选填|	页码|
-|api_key|	必填|	api_key|
-|time|	必填|	时间戳|
-|sign|	必填|	签名|
+|symbol|    必填| 市场标记，btcusdt，详情看下面|
+|startDate| 选填| （新增）开始时间，精确到秒“yyyy-MM-dd mm:hh:ss”|
+|endDate|   选填| （新增）结束时间，精确到秒“yyyy-MM-dd mm:hh:ss”|
+|pageSize|  选填| 页面大小|
+|page|  选填| 页码|
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sign|  必填| 签名|
 
 返回值:
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |-----|------|---------|
-|code|	0|	 |
-|msg|	"suc"|	code>0失败|
-|data|	如下:|
+|code|  0|   |
+|msg|   "suc"|  code>0失败|
+|data|  如下:|
 ```
 {
     "count":10,
@@ -318,12 +318,12 @@ REST API
 
 |虚拟币编号|xxx-cny|xxx-btc|xxx-usdt|
 |----------|-------|-------|-------|
-|btc|	btccny|	-|	btcusdt|
-|eth|	ethcny|	ethbtc|	ethusdt|
-|ltc|	ltccny|	ltcbtc|	ltcusdt|
-|bcc|	bcccny|	bccbtc|	bccusdt|
-|etc|	etccny|	etcbtc|	etcusdt|
-|usdt|	usdtcny|	-|	-|
+|btc|   btccny| -|  btcusdt|
+|eth|   ethcny| ethbtc| ethusdt|
+|ltc|   ltccny| ltcbtc| ltcusdt|
+|bcc|   bcccny| bccbtc| bccusdt|
+|etc|   etccny| etcbtc| etcusdt|
+|usdt|  usdtcny|    -|  -|
 
 ---
 ### <span id="3">获取全部成交记录</span>
@@ -331,25 +331,25 @@ REST API
 1. 接口地址:/open/api/all_trade
 2. 接口说明:(get请求)获取全部成交记录
 
-|参数|	填写类型|	说明|
+|参数|    填写类型|   说明|
 |------------|--------|-----------------------------|
-|symbol|	必填|	市场标记，btcusdt，详情看下面|
-|startDate|	选填|	（新增）开始时间，精确到秒“yyyy-MM-dd HH:mm:ss”|
-|endDate|	选填|	（新增）结束时间，精确到秒“yyyy-MM-dd HH:mm:ss”|
-|pageSize|	选填|	页面大小|
-|page|	选填|	页码|
-|api_key|	必填|	api_key|
-|time|	必填|	时间戳|
-|sort|	选填|	1表示倒序|
-|sign|	必填|	签名|
+|symbol|    必填| 市场标记，btcusdt，详情看下面|
+|startDate| 选填| （新增）开始时间，精确到秒“yyyy-MM-dd HH:mm:ss”|
+|endDate|   选填| （新增）结束时间，精确到秒“yyyy-MM-dd HH:mm:ss”|
+|pageSize|  选填| 页面大小|
+|page|  选填| 页码|
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sort|  选填| 1表示倒序|
+|sign|  必填| 签名|
 
 返回值:
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |-----|------|---------|
-|code|	0|	 |
-|msg|	"suc"|	code>0失败|
-| data|	如下:|
+|code|  0|   |
+|msg|   "suc"|  code>0失败|
+| data| 如下:|
 ```
 {
     "count":22,
@@ -405,12 +405,12 @@ REST API
 ```
 |虚拟币编号|xxx-cny|xxx-btc|xxx-usdt|
 |----------|-------|-------|-------|
-|btc|	btccny|	-|	btcusdt|
-|eth|	ethcny|	ethbtc|	ethusdt|
-|ltc|	ltccny|	ltcbtc|	ltcusdt|
-|bcc|	bcccny|	bccbtc|	bccusdt|
-|etc|	etccny|	etcbtc|	etcusdt|
-|usdt|	usdtcny|	-|	-|
+|btc|   btccny| -|  btcusdt|
+|eth|   ethcny| ethbtc| ethusdt|
+|ltc|   ltccny| ltcbtc| ltcusdt|
+|bcc|   bcccny| bccbtc| bccusdt|
+|etc|   etccny| etcbtc| etcusdt|
+|usdt|  usdtcny|    -|  -|
 
 
 ---
@@ -419,29 +419,29 @@ REST API
 1. 接口地址:/open/api/cancel_order
 2. 接口说明:(post请求)取消委托单
 
-|参数|	填写类型|	说明|
+|参数|    填写类型|   说明|
 |------------|--------|-----------------------------|
-|order_id|	必填|	订单ID|
-|symbol|	必填|	市场标记，ethbtc，详情看下面|
-|api_key|	必填|	api_key|
-|time|	必填|	时间戳|
-|sign|	必填|	签名|
+|order_id|  必填| 订单ID|
+|symbol|    必填| 市场标记，ethbtc，详情看下面|
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sign|  必填| 签名|
 
 返回值:
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |------------|--------|------------------|
-|code	|0	 |
-|msg|	"suc"|	code>0失败|
-|data|	“”|
+|code   |0   |
+|msg|   "suc"|  code>0失败|
+|data|  “”|
 
 |虚拟币编号|xxx-cny（xxx101）|xxx-btc（xxx201）|
 |------------|--------|----------|
-|btc|	btccny|	-|
-|eth|	ethcny|	ethbtc|
-|ltc|	ltccny|	ltcbtc|
-|bcc|	bcccny|	bccbtc|
-|etc|	etccny|	etcbtc|
+|btc|   btccny| -|
+|eth|   ethcny| ethbtc|
+|ltc|   ltccny| ltcbtc|
+|bcc|   bcccny| bccbtc|
+|etc|   etccny| etcbtc|
 
 ---
 ###  <span id="5">根据币对取消全部委托单</span>
@@ -449,29 +449,29 @@ REST API
 1. 接口地址:/open/api/cancel_order_all
 2. 接口说明:(post请求)根据币对取消全部委托单（最多取消两千条，多余两千请循环撤销）
 
-|参数|	填写类型|	说明|
+|参数|    填写类型|   说明|
 |------------|--------|-----------------------------|
-|symbol|	必填|	市场标记，ethbtc，详情看下面|
-|api_key|	必填|	api_key|
-|time|	必填|	时间戳|
-|sign|	必填|	签名|
+|symbol|    必填| 市场标记，ethbtc，详情看下面|
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sign|  必填| 签名|
 
 返回值:
 
-|字段	|实例	|解释|
+|字段 |实例 |解释|
 |------------|--------|--------------|
-|code	|0	|
-|msg	|"suc"	|code>0失败|
-|data	|“”|
+|code   |0  |
+|msg    |"suc"  |code>0失败|
+|data   |“”|
 
  
 |虚拟币编号|xxx-cny（xxx101）|xxx-btc（xxx201）|
 |------------|-----------|------------|
-|btc|	btccny|	-|
-|eth|	ethcny|	ethbtc|
-|ltc|	ltccny|	ltcbtc|
-|bcc|	bcccny|	bccbtc|
-|etc|	etccny|	etcbtc|
+|btc|   btccny| -|
+|eth|   ethcny| ethbtc|
+|ltc|   ltccny| ltcbtc|
+|bcc|   bcccny| bccbtc|
+|etc|   etccny| etcbtc|
 
 ---
 ### <span id="6">创建订单</span>
@@ -480,33 +480,33 @@ REST API
 1. 接口地址:/open/api/create_order
 2. 接口说明:(post请求)创建订单
 
-|参数|	填写类型|	说明|
+|参数|    填写类型|   说明|
 |------------|--------|-----------------------------|
-|side|	必填|	买卖方向BUY、SELL|
-|type|	必填|	挂单类型，1:限价委托、2:市价委托|
-|volume| 	必填|	购买数量（多义，复用字段）<br>type=1:表示买卖数量<br>type=2:买则表示总价格，卖表示总个数<br>买卖限制user/me-用户信息|
-|price|	选填|	委托单价：type=2：不需要此参数|
-|symbol|	必填|	市场标记，ethbtc|
-|fee_is_user_exchange_coin|	选填|	（冗余字段，忽略）0，当交易所有平台币时，此参数表示是否使用用平台币支付手续费，0否，1是|
-|api_key|	必填|	api_key|
-|time|	必填|	时间戳|
-|sign|	必填|	签名|
+|side|  必填| 买卖方向BUY、SELL|
+|type|  必填| 挂单类型，1:限价委托、2:市价委托|
+|volume|    必填| 购买数量（多义，复用字段）<br>type=1:表示买卖数量<br>type=2:买则表示总价格，卖表示总个数<br>买卖限制user/me-用户信息|
+|price| 选填| 委托单价：type=2：不需要此参数|
+|symbol|    必填| 市场标记，ethbtc|
+|fee_is_user_exchange_coin| 选填| （冗余字段，忽略）0，当交易所有平台币时，此参数表示是否使用用平台币支付手续费，0否，1是|
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sign|  必填| 签名|
 
 返回值:
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |-----|------|---------|
-|code|	0|	 
-|msg|	"suc"|	code>0失败|
-|data|	{"order_id":34343}|成功返回交易ID|
+|code|  0|   
+|msg|   "suc"|  code>0失败|
+|data|  {"order_id":34343}|成功返回交易ID|
 
 |虚拟币编号|xxx-cny（xxx101）|xxx-btc（xxx201）|
 |------------|------------|------------|
-|btc|	btccny|	-|
-|eth|	ethcny|	ethbtc|
-|ltc|	ltccny|	ltcbtc|
-|bcc|	bcccny|	bccbtc|
-|etc|	etccny|	etcbtc|
+|btc|   btccny| -|
+|eth|   ethcny| ethbtc|
+|ltc|   ltccny| ltcbtc|
+|bcc|   bcccny| bccbtc|
+|etc|   etccny| etcbtc|
 
 ---
 ###  <span id="7">获取所有交易对行情</span>
@@ -516,11 +516,11 @@ REST API
 * 该接口不进行签名校验
 * 参数:无
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |------------|--------|-----------------------------|
-|code|	0|	 
-|msg|	"suc"|	code>0失败|
-|data|	如下：|返回值说明<br>date: 返回数据时服务器时间 <br>symbol: 交易对（交易对1(base)简称_交易对2(quote)简称） <br>buy: 买一价 <br>high: 最高价 <br>last: 最新成交价 <br>low: 最低价 <br>sell: 卖一价 <br>vol: 成交量(最近的24小时)<br>rose:涨跌幅|
+|code|  0|   
+|msg|   "suc"|  code>0失败|
+|data|  如下：|返回值说明<br>date: 返回数据时服务器时间 <br>symbol: 交易对（交易对1(base)简称_交易对2(quote)简称） <br>buy: 买一价 <br>high: 最高价 <br>last: 最新成交价 <br>low: 最低价 <br>sell: 卖一价 <br>vol: 成交量(最近的24小时)<br>rose:涨跌幅|
 ```
 {
    "date": 1534335607859,
@@ -591,26 +591,26 @@ REST API
 
 * 该接口不进行签名校验
 
-|参数|	填写类型|	说明|
+|参数|    填写类型|   说明|
 |------------|--------|-----------------------------|
-|symbol|	必填|	市场标记，bchbtc，详情看下面|
-|period|	必填|	单位为分钟，比喻1分钟则为1，一天则为1440|
+|symbol|    必填| 市场标记，bchbtc，详情看下面|
+|period|    必填| 单位为分钟，比喻1分钟则为1，一天则为1440|
 
 |虚拟币编号|xxx-cny|xxx-btc|xxx-usdt|
 |------------|-----------|----------|----------|
-|bch|	bcccny|	bchbtc|	bchusdt|
-|btc|	btccny|	-|	btcusdt|
-|etc|	etccny|	etcbtc|	etcusdt|
-|eth|	ethcny|	ethbtc|	ethusdt|
-|ltc|	ltccny|	ltcbtc|	ltcusdt|
+|bch|   bcccny| bchbtc| bchusdt|
+|btc|   btccny| -|  btcusdt|
+|etc|   etccny| etcbtc| etcusdt|
+|eth|   ethcny| ethbtc| ethusdt|
+|ltc|   ltccny| ltcbtc| ltcusdt|
 
 返回值:
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |------------|-----------|----------------|
-|code|	0|	 
-|msg|	"suc"|	code>0失败|
-|data|	如下：|
+|code|  0|   
+|msg|   "suc"|  code>0失败|
+|data|  如下：|
 
 ```
 [
@@ -651,17 +651,17 @@ REST API
 
 * 该接口不进行签名校验
 
-|参数|	填写类型|	说明|
+|参数|    填写类型|   说明|
 |------------|--------|-----------------------------|
-|symbol|	必填|	市场标记，btcusdt，详情看下面|
+|symbol|    必填| 市场标记，btcusdt，详情看下面|
 
 返回值:
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |------------|--------|---------------|
-|code|	0	| 
-|msg|	"suc"|	code>0失败|
-|data|	如下：|
+|code|  0   | 
+|msg|   "suc"|  code>0失败|
+|data|  如下：|
 ```
 {
     "high": 1,//最高值
@@ -676,11 +676,11 @@ REST API
 ```
 |虚拟币编号|xxx-cny|xxx-btc|xxx-usdt|
 |------------|--------|----------|----------|
-|bcc|	bcccny|	bccbtc|	bccusdt|
-|btc|	btccny|	-|	btcusdt|
-|etc|	etccny|	etcbtc|	etcusdt|
-|eth|	ethcny|	ethbtc|	ethusdt|
-|ltc|	ltccny|	ltcbtc|	ltcusdt|
+|bcc|   bcccny| bccbtc| bccusdt|
+|btc|   btccny| -|  btcusdt|
+|etc|   etccny| etcbtc| etcusdt|
+|eth|   ethcny| ethbtc| ethusdt|
+|ltc|   ltccny| ltcbtc| ltcusdt|
 
 
 
@@ -694,17 +694,17 @@ REST API
 
 * 该接口不进行签名校验
 
-|参数|	填写类型|	说明|
+|参数|    填写类型|   说明|
 |------------|--------|-----------------------------|
-|symbol|	必填|	市场标记，bchbtc，详情看下面|
+|symbol|    必填| 市场标记，bchbtc，详情看下面|
 
 返回值:
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |------------|--------|---------------|
-|code|	0	| 
-|msg|	"suc"|	code>0失败|
-|data|	如下：|
+|code|  0   | 
+|msg|   "suc"|  code>0失败|
+|data|  如下：|
 ```
 [
         {
@@ -735,11 +735,11 @@ REST API
 ```
 |虚拟币编号|xxx-cny|xxx-btc|xxx-usdt|
 |------------|--------|-----------|----------|
-|bch|	bcccny|	bchbtc|	bchusdt|
-|btc|	btccny|	-|	btcusdt|
-|etc|	etccny|	etcbtc|	etcusdt|
-|eth|	ethcny|	ethbtc|	ethusdt|
-|ltc|	ltccny|	ltcbtc|	ltcusdt|
+|bch|   bcccny| bchbtc| bchusdt|
+|btc|   btccny| -|  btcusdt|
+|etc|   etccny| etcbtc| etcusdt|
+|eth|   ethcny| ethbtc| ethusdt|
+|ltc|   ltccny| ltcbtc| ltcusdt|
 
 
 
@@ -753,27 +753,27 @@ REST API
 1. 接口地址:/open/api/market
 2. 接口说明:(get请求)获取各个币对的最新成交价
 
-|参数|	填写类型|	说明|
+|参数|    填写类型|   说明|
 |------------|--------|-----------------------------|
-|api_key|	必填|	api_key|
-|time|	必填|	时间戳|
-|sign|	必填|	签名|
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sign|  必填| 签名|
 
 返回值:
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |------------|--------|---------------|
-|code|	0|	 
-|msg|	"suc"|	code>0失败|
-|data|	{"btcusdt":15000,"ethusdt":800}|
+|code|  0|   
+|msg|   "suc"|  code>0失败|
+|data|  {"btcusdt":15000,"ethusdt":800}|
 
 |虚拟币编号|xxx-cny|xxx-btc|xxx-usdt|
 |------------|--------|----------|----------|
-|btc|	btccny|	-|	btcusdt|
-|eth|	ethcny|	ethbtc|	ethusdt|
-|ltc|	ltccny|	ltcbtc|	ltcusdt|
-|bcc|	bcccny|	bccbtc|	bccusdt|
-|etc|	etccny|	etcbtc|	etcusdt|
+|btc|   btccny| -|  btcusdt|
+|eth|   ethcny| ethbtc| ethusdt|
+|ltc|   ltccny| ltcbtc| ltcusdt|
+|bcc|   bcccny| bccbtc| bccusdt|
+|etc|   etccny| etcbtc| etcusdt|
 
 
 ---
@@ -785,18 +785,18 @@ REST API
 
 * 该接口不进行签名校验
 
-|参数|	填写类型|	说明|
+|参数|    填写类型|   说明|
 |------------|--------|-----------------------------|
-|symbol	|必填|	市场标记，ethbtc，详情看下面|
-|type|	必填|	深度类型，step0, step1, step2（合并深度0-2）；step0时，精度最高|
+|symbol |必填|    市场标记，ethbtc，详情看下面|
+|type|  必填| 深度类型，step0, step1, step2（合并深度0-2）；step0时，精度最高|
 
 返回值:
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |------------|--------|---------------|
-|code|	0|	 
-|msg|	"suc"|	code>0失败|
-|data|	如下：|
+|code|  0|   
+|msg|   "suc"|  code>0失败|
+|data|  如下：|
 ```
 {  
     "tick":{
@@ -831,22 +831,22 @@ REST API
 * mass_place是需要发送到系统的一批限价订单，每次最多100条
 * mass_cancel是需要撤回的一批订单,每次最多100条
 
-|参数|	填写类型|	说明|
+|参数|    填写类型|   说明|
 |------------|--------|--------------------------------------|
-|api_key|	必填|	api_key|
-|time|	必填|	时间戳|
-|sign|	必填|	签名|
-|symbol|	必填|	币种 ，例 btcusdt|
-|mass_cancel|	选填|	[1234,234....] 撤单参数，订单id|
-|mass_place|	选填|	[{side:"BUY",type:"1",volume:"0.01",price:"6400",fee_is_user_exchange_coin:"0"}, {}, …]<br>含义：<br>symbol:币种，例btcusdt<br>mass_place:下单参数。side：方向（买卖方向BUY、SELL），<br>--------------------------------type：类型（1:限价委托、2:市价委托）<br>--------------------------------volume：购买数量（多义，复用字段） type=1:表示买卖数量type=2:买则表示总价格，卖表示总个数<br>--------------------------------price：委托单价：type=2：不需要此参数<br>--------------------------------fee_is_user_exchange_coin：(冗余字段)当交易所有平台币时，此参数表示是否使用用平台币支付手续费，0否，1是|
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sign|  必填| 签名|
+|symbol|    必填| 币种 ，例 btcusdt|
+|mass_cancel|   选填| [1234,234....] 撤单参数，订单id|
+|mass_place|    选填| [{side:"BUY",type:"1",volume:"0.01",price:"6400",fee_is_user_exchange_coin:"0"}, {}, …]<br>含义：<br>symbol:币种，例btcusdt<br>mass_place:下单参数。side：方向（买卖方向BUY、SELL），<br>--------------------------------type：类型（1:限价委托、2:市价委托）<br>--------------------------------volume：购买数量（多义，复用字段） type=1:表示买卖数量type=2:买则表示总价格，卖表示总个数<br>--------------------------------price：委托单价：type=2：不需要此参数<br>--------------------------------fee_is_user_exchange_coin：(冗余字段)当交易所有平台币时，此参数表示是否使用用平台币支付手续费，0否，1是|
 
 返回值:
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |------------|--------|---------------|
-|code|	0|	 
-|msg|	"suc"|	code>0失败|
-|data|	"mass_place": [{"order_id":"1234","code":"0", "msg":"suc"}，...]<br>"mass_cancel": [{"order_id":"1234","code":"0", "msg":"suc"}，.......]|下单返回：订单id，状态码，成功或失败信息。<br>撤单返回：订单id，状态码，成功或失败信息<br>0表示成功。|
+|code|  0|   
+|msg|   "suc"|  code>0失败|
+|data|  "mass_place": [{"order_id":"1234","code":"0", "msg":"suc"}，...]<br>"mass_cancel": [{"order_id":"1234","code":"0", "msg":"suc"}，.......]|下单返回：订单id，状态码，成功或失败信息。<br>撤单返回：订单id，状态码，成功或失败信息<br>0表示成功。|
 
 
 
@@ -862,22 +862,22 @@ REST API
 
 * v2版本变化: 去掉了结果返回值中的tradeList成交记录,提升效率;如果需要单一订单的成交信息,可以使用 /open/api/order_info 接口单独去查
 
-|参数|	填写类型|	说明|
+|参数|    填写类型|   说明|
 |------------|--------|--------------------------------------|
-|symbo|l	必填|	市场标记，btcusdt，详情看下面|
-|pageSize|	选填|	页面大小|
-|page|	选填|	页码|
-|api_key|	必填|	api_key|
-|time|	必填|	时间戳|
-|sign|	必填|	签名|
+|symbo|l    必填| 市场标记，btcusdt，详情看下面|
+|pageSize|  选填| 页面大小|
+|page|  选填| 页码|
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sign|  必填| 签名|
 
 返回值:
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |------------|--------|---------------|
-|code|	0|	 
-|msg|	"suc"|	code>0失败|
-|data|	如下:|订单状态(status)说明：<br>INIT(0,"初始订单，未成交未进入盘口"),<br>NEW_(1,"新订单，未成交进入盘口"),<br>FILLED(2,"完全成交"),<br>PART_FILLED(3,"部分成交"),<br>CANCELED(4,"已撤单"),<br>PENDING_CANCEL(5,"待撤单"),<br>EXPIRED(6,"异常订单");|
+|code|  0|   
+|msg|   "suc"|  code>0失败|
+|data|  如下:|订单状态(status)说明：<br>INIT(0,"初始订单，未成交未进入盘口"),<br>NEW_(1,"新订单，未成交进入盘口"),<br>FILLED(2,"完全成交"),<br>PART_FILLED(3,"部分成交"),<br>CANCELED(4,"已撤单"),<br>PENDING_CANCEL(5,"待撤单"),<br>EXPIRED(6,"异常订单");|
 ```
 {
     "count":10,
@@ -925,12 +925,12 @@ REST API
 ```
 |虚拟币编号|xxx-cny|xxx-btc|xxx-usdt|
 |------------|--------|----------|----------|
-|btc|	btccny|	-|	btcusdt|
-|eth|	ethcny|	ethbtc|	ethusdt|
-|ltc|	ltccny|	ltcbtc|	ltcusdt|
-|bcc|	bcccny|	bccbtc|	bccusdt|
-|etc|	etccny|	etcbtc|	etcusdt|
-|usdt|	usdtcny|	-|	-/web/new_order-获取当前委托|
+|btc|   btccny| -|  btcusdt|
+|eth|   ethcny| ethbtc| ethusdt|
+|ltc|   ltccny| ltcbtc| ltcusdt|
+|bcc|   bcccny| bccbtc| bccusdt|
+|etc|   etccny| etcbtc| etcusdt|
+|usdt|  usdtcny|    -|  -/web/new_order-获取当前委托|
 
 
 
@@ -940,21 +940,21 @@ REST API
 1. 接口地址:/open/api/order_info
 2. 接口说明:(get请求)获取订单详情
 
-|参数|	填写类型|	说明|
+|参数|    填写类型|   说明|
 |------------|--------|--------------------------------------|
-|order_id|	必填|	订单ID|
-|symbol|	必填|	市场标记，ethbtc，详情看下面|
-|api_key|	必填|	api_key|
-|time|	必填|	时间戳|
-|sign|	必填|	签名|
+|order_id|  必填| 订单ID|
+|symbol|    必填| 市场标记，ethbtc，详情看下面|
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sign|  必填| 签名|
 
 返回值:
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |------------|--------|---------------|
-|code|	0|	 
-|msg|	"suc"|	code>0失败|
-|data|	如下:|
+|code|  0|   
+|msg|   "suc"|  code>0失败|
+|data|  如下:|
 ```
 {
     "order_info":{
@@ -1000,33 +1000,33 @@ REST API
 1. 接口地址:/open/api/self_trade
 2. 接口说明:(post请求)内部自成交接口-(saas专有)
 
-|参数|	填写类型|	说明|
+|参数|    填写类型|   说明|
 |------------|--------|--------------------------------------|
-|side|	必填|	买卖方向BUY、SELL|
-|type|	必填|	挂单类型，1:限价委托|
-|volume| 	必填|	购买数量（多义，复用字段）<br>type=1:表示买卖数量<br>买卖限制user/me-用户信息|
-|price|	选填|	 
-|symbol|	必填|	市场标记，ethbtc|
-|fee_is_user_exchange_coin|	选填|	0，当交易所有平台币时，此参数表示是否使用用平台币支付手续费，0否，1是|
-|api_key|	必填|	api_key|
-|time|	必填|	时间戳|
-|sign|	必填|	签名|
+|side|  必填| 买卖方向BUY、SELL|
+|type|  必填| 挂单类型，1:限价委托|
+|volume|    必填| 购买数量（多义，复用字段）<br>type=1:表示买卖数量<br>买卖限制user/me-用户信息|
+|price| 选填|  
+|symbol|    必填| 市场标记，ethbtc|
+|fee_is_user_exchange_coin| 选填| 0，当交易所有平台币时，此参数表示是否使用用平台币支付手续费，0否，1是|
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sign|  必填| 签名|
 
 返回值:
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |------------|--------|---------------|
-|code|	0|	 
-|msg|	"suc"|	code>0失败|
-|data|	{"order_id":34343}|成功返回交易ID|
+|code|  0|   
+|msg|   "suc"|  code>0失败|
+|data|  {"order_id":34343}|成功返回交易ID|
 
 |虚拟币编号|xxx-cny（xxx101）|xxx-btc（xxx201）|
 |------------|--------|-----------|
-|bcc|	bcccny|	bccbtc|
-|btc|	btccny|	-|
-|etc|	etccny|	etcbtc|
-|eth|	ethcny|	ethbtc|
-|ltc|	ltccny|	ltcbtc|
+|bcc|   bcccny| bccbtc|
+|btc|   btccny| -|
+|etc|   etccny| etcbtc|
+|eth|   ethcny| ethbtc|
+|ltc|   ltccny| ltcbtc|
 
 
 ---
@@ -1040,11 +1040,11 @@ REST API
 
 返回值:
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |------------|--------|---------------|
-|code|	0|	 
-|msg|	"suc"|	code>0失败|
-|data|	如下：|symbol 交易对<br>base_coin 基础币种<br>count_coin 计价货币<br>price_precision 价格精度位数（0为个位）<br>amount_precision 数量精度位数（0为个位）|
+|code|  0|   
+|msg|   "suc"|  code>0失败|
+|data|  如下：|symbol 交易对<br>base_coin 基础币种<br>count_coin 计价货币<br>price_precision 价格精度位数（0为个位）<br>amount_precision 数量精度位数（0为个位）|
 ```
 {
 "code": "0",
@@ -1104,22 +1104,22 @@ REST API
 1. 接口地址:/open/api/user_balance_info
 2. 接口说明:(post请求)获取用户资产以及充值记录
 
-|参数|	填写类型|	说明|
+|参数|    填写类型|   说明|
 |------------|--------|--------------------------------------|
-|uid|	选填|	用户uid（用户uid,mobile_number,email三者必须填其中一个）|
-|mobile_number|	选填|	查询的用户号码，手机号码或者邮箱|
-|email|	选填|	用户邮箱|
-|api_key|	必填|	api_key|
-|time|	必填|	时间戳|
-|sign|	必填|	签名|
+|uid|   选填| 用户uid（用户uid,mobile_number,email三者必须填其中一个）|
+|mobile_number| 选填| 查询的用户号码，手机号码或者邮箱|
+|email| 选填| 用户邮箱|
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sign|  必填| 签名|
 
 返回值:
 
-|字段|	实例|	解释|
+|字段|    实例| 解释|
 |------------|--------|--------------------------------------------|
-|code|	0|“0” - > 成功<br>“100004” ->参数不合法<br>“100005” -> 签名错误<br>“100007” -> 非法IP<br>"110032" -> 用户无查询权限<br>“110020” -> 要查询的用户不存在|
-|msg|	"suc"|	code>0失败|
-|data|	如下：|balance_info 各个币种的资产信息<br>deposit_list 充值的流水信息|
+|code|  0|“0” - > 成功<br>“100004” ->参数不合法<br>“100005” -> 签名错误<br>“100007” -> 非法IP<br>"110032" -> 用户无查询权限<br>“110020” -> 要查询的用户不存在|
+|msg|   "suc"|  code>0失败|
+|data|  如下：|balance_info 各个币种的资产信息<br>deposit_list 充值的流水信息|
 ```
 {
 "balance_info":[
@@ -1480,7 +1480,7 @@ public class Main {
         params.put("sign", sign);
 
 /** http请求 */
-        String resultJson = get("https://api.bikicoin.com/open/api/get_trades?symbol=btcusdt", params);
+        String resultJson = get("https://api.Exchange.com/open/api/get_trades?symbol=btcusdt", params);
         System.out.println(resultJson);
     }
 
@@ -1646,7 +1646,7 @@ public class WsTest {
     public static void main(String[] args) {
         try {
 //wsurl 
-            String url = "wss://ws.bikicoin.com/kline-api/ws";
+            String url = "wss://ws.Exchange.com/kline-api/ws";
 //历史数据请求参数 
             String reqParam = "{"event":"req","params":{"channel":"market_btcusdt_trade_ticker","cb_id":"btcusdt","top":150}}";
 //订阅参数 
@@ -1658,7 +1658,7 @@ public class WsTest {
 //订阅实时数据 
             wsc.send(subParam);
 
-//线程不结束，等待新的消息，www.bikicoin.com 一般一分钟左右会有新的成交返回
+//线程不结束，等待新的消息，www.Exchange.com 一般一分钟左右会有新的成交返回
             while (true) {
                 Thread.sleep(1000);
             }
