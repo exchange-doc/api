@@ -1,6 +1,6 @@
 #   Api Docs(Chinese simplified document)
 
-## 1. open-api Catalog (example：www.***.com/exchange-open-api)
+## 1. open-api Catalog (example：openapi.***.com/exchange-open-api)
 -   [invoking demo](#open-api)
 -   [Balance of the assets](#1)
 -	[Acquire full delegation](#2)
