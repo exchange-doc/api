@@ -1430,7 +1430,7 @@ REST API
 
 ```
 
-package com.chainup.stats.action;
+package com.exchange.stats.action;
 
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
