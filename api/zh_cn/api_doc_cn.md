@@ -1,6 +1,6 @@
 #  Exchange官方API文档
 
-#### Exchange交易所开发文档([English Docs](https://github.com/exchange-doc/api/edit/master/api/us_en/api_doc_en.md))
+#### Exchange交易所开发文档([English Docs](https://github.com/exchange-doc/api/api/us_en/api_doc_en.md))
 - [介绍](#Introduction)
 - [开始使用](#startToUse)
 - [API接口加密验证](#a1)
