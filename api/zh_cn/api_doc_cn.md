@@ -818,18 +818,15 @@ REST API
 }
 ```
 
-
-
-
 ---
-### <span id="13">批量下单，同时批量撤回指定订单</span>
+###  <span id="13">批量下单/批量撤单</span>
 
 
-1. 接口地址:/open/api/mass_replace
+1. 接口地址:/open/api/mass_replaceV2
 2. 接口说明:(post请求)批量下单，同时批量撤回指定订单
+* mass_place是需要发送到系统的一批限价订单，每次最多1000条
+* mass_cancel是需要撤回的一批订单,每次最多1000条
 
-* mass_place是需要发送到系统的一批限价订单，每次最多100条
-* mass_cancel是需要撤回的一批订单,每次最多100条
 
 |参数|    填写类型|   说明|
 |------------|--------|--------------------------------------|
@@ -838,7 +835,7 @@ REST API
 |sign|  必填| 签名|
 |symbol|    必填| 币种 ，例 btcusdt|
 |mass_cancel|   选填| [1234,234....] 撤单参数，订单id|
-|mass_place|    选填| [{side:"BUY",type:"1",volume:"0.01",price:"6400",fee_is_user_exchange_coin:"0"}, {}, …]<br>含义：<br>symbol:币种，例btcusdt<br>mass_place:下单参数。side：方向（买卖方向BUY、SELL），<br>--------------------------------type：类型（1:限价委托、2:市价委托）<br>--------------------------------volume：购买数量（多义，复用字段） type=1:表示买卖数量type=2:买则表示总价格，卖表示总个数<br>--------------------------------price：委托单价：type=2：不需要此参数<br>--------------------------------fee_is_user_exchange_coin：(冗余字段)当交易所有平台币时，此参数表示是否使用用平台币支付手续费，0否，1是|
+|mass_place|    选填| [{side:"BUY",type:"1",volume:"0.01",price:"6400",fee_is_user_exchange_coin:"0"}, {}, …]<br>含义：<br>symbol:币种，例btcusdt<br>mass_place:下单参数-->side：方向（买卖方向BUY、SELL），<br>--------------------------------type：类型（1:限价委托、2:市价委托）<br>--------------------------------volume：购买数量（多义，复用字段） type=1:表示买卖数量type=2:买则表示总价格，卖表示总个数<br>--------------------------------price：委托单价：type=2：不需要此参数<br>--------------------------------fee_is_user_exchange_coin：(冗余字段)当交易所有平台币时，此参数表示是否使用用平台币支付手续费，0否，1是|
 
 返回值:
 
@@ -846,10 +843,37 @@ REST API
 |------------|--------|---------------|
 |code|  0|   
 |msg|   "suc"|  code>0失败|
-|data|  "mass_place": [{"order_id":"1234","code":"0", "msg":"suc"}，...]<br>"mass_cancel": [{"order_id":"1234","code":"0", "msg":"suc"}，.......]|下单返回：订单id，状态码，成功或失败信息。<br>撤单返回：订单id，状态码，成功或失败信息<br>0表示成功。|
+|data|  "mass_place": [{"msg": "Success","code": "0","order_id": [504,505]},{"msg": "Order cancellation failed","code": "8","order_id": [504,505]}]<br>"mass_cancel": [{"msg": "Success","code": "0","order_id": [572,573,574,626,629]}]|下单返回：订单id，状态码，成功或失败信息。<br>撤单返回：订单id，状态码，成功或失败信息<br>0表示成功。|
+```
 
+## <span id="b7">ws-api</span>
 
+---
+###  <span id="19">订阅-K线行情</span>
 
+* 请求:
+```
+{"event":"sub","params":{"channel":"market_$base$quote_kline_[1min/5min/15min/30min/60min/1day/1week/1month]","cb_id":"自定义"}}
+```
+* 返回订阅状态1次:
+```
+{"event_rep":"subed","channel":"market_$base$quote_kline_[1min/5min/15min/30min/60min/1day/1week/1month]","cb_id":"原路返回","ts":1506584998239,"status":"ok"}
+```
+* 持续返回订阅消息:
+```
+{
+    "channel":"market_$base$quote_kline_[1min/5min/15min/30min/60min/1day/1week/1month]",//订阅的交易对行情$base$quote表示btckrw等
+    "ts":1506584998239,//请求时间
+    "tick":{
+        "id":1506602880,//时间刻度起始值
+        "amount":123.1221,//交易额
+        "vol":1212.12211,//交易量
+        "open":2233.22,//开盘价
+        "close":1221.11,//收盘价
+        "high":22322.22,//最高价
+        "low":2321.22//最低价
+    }
+}
 
 ---
 ### <span id="14">获取当前委托</span>
