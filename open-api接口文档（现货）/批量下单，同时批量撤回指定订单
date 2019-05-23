@@ -1,21 +1,21 @@
 ### url:www.***.com/exchange-open-api(例)
 
-## 接口地址:/open/api/v2/new_order
+## 接口地址:/open/api/mass_replace
 
-## 接口说明:(get请求)获取当前委托（包括未成交和正在成交的委托）
+## 接口说明:(post请求)批量下单，同时批量撤回指定订单
 
-* 旧接口 /open/api/new_order 仍保留,但已经不建议使用
+* mass_place是需要发送到系统的一批限价订单，每次最多100条
 
-* v2版本变化: 去掉了结果返回值中的tradeList成交记录,提升效率;如果需要单一订单的成交信息,可以使用 /open/api/order_info 接口单独去查
+* mass_cancel是需要撤回的一批订单,每次最多100条
 
 |参数|	填写类型|	说明|
 |------------|--------|--------------------------------------|
-|symbo|l	必填|	市场标记，btcusdt，详情看下面|
-|pageSize|	选填|	页面大小|
-|page|	选填|	页码|
 |api_key|	必填|	api_key|
 |time|	必填|	时间戳|
 |sign|	必填|	签名|
+|symbol|	必填|	币种 ，例 btcusdt|
+|mass_cancel|	选填|	[1234,234....] 撤单参数，订单id|
+|mass_place|	选填|	[{side:"BUY",type:"1",volume:"0.01",price:"6400",fee_is_user_exchange_coin:"0"}, {}, …]<br>含义：<br>symbol:币种，例btcusdt<br>mass_place:下单参数。side：方向（买卖方向BUY、SELL），<br>--------------------------------type：类型（1:限价委托、2:市价委托）<br>--------------------------------volume：购买数量（多义，复用字段） type=1:表示买卖数量type=2:买则表示总价格，卖表示总个数<br>--------------------------------price：委托单价：type=2：不需要此参数<br>--------------------------------fee_is_user_exchange_coin：(冗余字段)当交易所有平台币时，此参数表示是否使用用平台币支付手续费，0否，1是|
 
 返回值:
 
@@ -23,57 +23,4 @@
 |------------|--------|---------------|
 |code|	0|	 
 |msg|	"suc"|	code>0失败|
-|data|	如下:|订单状态(status)说明：<br>INIT(0,"初始订单，未成交未进入盘口"),<br>NEW_(1,"新订单，未成交进入盘口"),<br>FILLED(2,"完全成交"),<br>PART_FILLED(3,"部分成交"),<br>CANCELED(4,"已撤单"),<br>PENDING_CANCEL(5,"待撤单"),<br>EXPIRED(6,"异常订单");|
-```
-{
-    "count":10,
-    "resultList":[
-        {
-            "side":"BUY",
-            "total_price":"0.10000000",
-            "created_at":1510993841000,
-            "avg_price":"0.10000000",
-            "countCoin":"btc",
-            "source":1,
-            "type":1,
-            "side_msg":"买入",
-            "volume":"1.000",
-            "price":"0.10000000",
-            "source_msg":"WEB",
-            "status_msg":"完全成交",
-            "deal_volume":"1.00000000",
-            "id":424,
-            "remain_volume":"0.00000000",
-            "baseCoin":"eth",
-            "status":2
-        },
-        {
-            "side":"SELL",
-            "total_price":"0.09900000",
-            "created_at":1510993715000,
-            "avg_price":"0.10000000",
-            "countCoin":"btc",
-            "source":1,
-            "type":1,
-            "side_msg":"卖出",
-            "volume":"1.000",
-            "price":"0.09900000",
-            "source_msg":"WEB",
-            "status_msg":"完全成交",
-            "deal_volume":"1.00000000",
-            "id":423,
-            "remain_volume":"0.00000000",
-            "baseCoin":"eth",
-            "status":2
-        }
-    ]
-}
-```
-|虚拟币编号|xxx-cny|xxx-btc|xxx-usdt|
-|------------|--------|----------|----------|
-|btc|	btccny|	-|	btcusdt|
-|eth|	ethcny|	ethbtc|	ethusdt|
-|ltc|	ltccny|	ltcbtc|	ltcusdt|
-|bcc|	bcccny|	bccbtc|	bccusdt|
-|etc|	etccny|	etcbtc|	etcusdt|
-|usdt|	usdtcny|	-|	-/web/new_order-获取当前委托|
+|data|	"mass_place": [{"order_id":"1234","code":"0", "msg":"suc"}，...]<br>"mass_cancel": [{"order_id":"1234","code":"0", "msg":"suc"}，.......]|下单返回：订单id，状态码，成功或失败信息。<br>撤单返回：订单id，状态码，成功或失败信息<br>0表示成功。|
