@@ -45,7 +45,7 @@
     -   [请求-K线历史数据](#24)
     -   [请求-成交历史数据](#25)
     -   [请求-首页24行情数据](#26)
-    -	[Place orders in batches and withdraw designated orders in batches - V2](#27)
+    -   [批量下单，同时批量撤回指定订单-V2](#27)
 
 ---
 
@@ -1422,31 +1422,28 @@ REST API
 }
 ```
 ---
-### <span id="27">Place orders in batches and withdraw designated orders in batches - </span>
+### <span id="27">批量下单，同时批量撤回指定订单-V2</span>
 
-1. Interface address:/open/api/mass_replace
-2. Interface specification:(postrequest)Place orders in batches and withdraw designated orders in batches
+* mass_place是需要发送到系统的一批限价订单，每次最多1000条
 
-* mass_placeIt's a batch of limited price orders that need to be sent to the system, up to 1000 at a time
-* mass_cancelIt's a batch of orders that need to be withdrawn, up to 1000 at a time
+* mass_cancel是需要撤回的一批订单,每次最多1000条
 
-|parameter|	Fill in type|	Explain|
+|参数|	填写类型|	说明|
 |------------|--------|--------------------------------------|
-|api_key|	Must fill|	api_key|
-|time|	Must fill|	time stamp|
-|sign|	Must fill|	autograph|
-|symbol|	Must fill|	currency ，example btcusdt|
-|mass_cancel|	Selective filling|	[1234,234....] Withdrawal parameters，Orderid|
-|mass_place|	Selective filling|	[{side:"BUY",type:"1",volume:"0.01",price:"6400",fee_is_user_exchange_coin:"0"}, {}, …]<br>Meaning：<br>symbol:currency，example btcusdt<br>mass_place:Order parameter。side：direction（Direction of businessBUY、SELL），<br>--------------------------------type：type（1:limit order、2:market order）<br>--------------------------------volume：Purchase quantity（Polysemy，Multiplex field） type=1:Represents the quantity of sales and purchasestype=2:Buy means the total price，Selling represents the total number<br>--------------------------------price：Authorized unit price：type=2：No need for this parameter<br>--------------------------------fee_is_user_exchange_coin：(Redundant fields) When the exchange has a platform currency，This parameter indicates whether to use platform currency to pay handling fee, 0 no, 1 yes.|
+|api_key|	必填|	api_key|
+|time|	必填|	时间戳|
+|sign|	必填|	签名|
+|symbol|	必填|	币种 ，例 btcusdt|
+|mass_cancel|	选填|	[1234,234....] 撤单参数，订单id|
+|mass_place|	选填|	[{side:"BUY",type:"1",volume:"0.01",price:"6400",fee_is_user_exchange_coin:"0"}, {}, …]<br>含义：<br>symbol:币种，例btcusdt<br>mass_place:下单参数-->side：方向（买卖方向BUY、SELL），<br>--------------------------------type：类型（1:限价委托、2:市价委托）<br>--------------------------------volume：购买数量（多义，复用字段） type=1:表示买卖数量type=2:买则表示总价格，卖表示总个数<br>--------------------------------price：委托单价：type=2：不需要此参数<br>--------------------------------fee_is_user_exchange_coin：(冗余字段)当交易所有平台币时，此参数表示是否使用用平台币支付手续费，0否，1是|
 
-Return value:
+返回值:
 
-|field|	Example|	explain|
+|字段|	实例|	解释|
 |------------|--------|---------------|
 |code|	0|	 
-|msg|	"suc"|	code>0fail|
-|data|	"mass_place": [{"msg": "Success","code": "0","order_id": [504,505]},{"msg": "Order cancellation failed","code": "8","order_id": [504,505]}]<br>"mass_cancel": [{"msg": "Success","code": "0","order_id": [572,573,574,626,629]}]|Order return：Orderid，Status code，Success or Failure Information。<br>Withdrawal of returns：Orderid，Status code，c<br>0Express success。|
-
+|msg|	"suc"|	code>0失败|
+|data|	"mass_place": [{"msg": "Success","code": "0","order_id": [504,505]},{"msg": "Order cancellation failed","code": "8","order_id": [504,505]}]<br>"mass_cancel": [{"msg": "Success","code": "0","order_id": [572,573,574,626,629]}]|下单返回：订单id，状态码，成功或失败信息。<br>撤单返回：订单id，状态码，成功或失败信息<br>0表示成功。|
 
 
 
