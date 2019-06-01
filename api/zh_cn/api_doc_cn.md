@@ -100,6 +100,14 @@ API Key 和 Secret Key将由随机生成和提供
 
 3、使用MD5对待签名串求签
 
+例：
+api_key = 1234567
+
+time = 12312312312137
+
+secret_key = 789654
+
+sign=md5(api_key1234567time12312312312137789654)
 
 
 
