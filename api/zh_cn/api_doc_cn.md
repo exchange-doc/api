@@ -90,58 +90,12 @@ API Key 和 Secret Key将由随机生成和提供
 - 所有请求都应该含有application/json类型内容，并且是有效的JSON。
 
 ## <span id="a4">签名</span>
-ACCESS-SIGN的请求头是对 timestamp + method + requestPath + "?" + queryString + body 字符串(+表示字符串连接)使用 HMAC SHA256 方法加密，通过BASE64 编码输出而得到的。其中，timestamp 的值与 ACCESS-TIMESTAMP 请求头相同。
 
-- method 是请求方法(POST/GET/PUT/DELETE)，字母全部大写。
-- requestPath 是请求接口路径。
-- queryString GET请求中的查询字符串
-- body 是指请求主体的字符串，如果请求没有主体(通常为GET请求)则body可省略。
- 
-**例如：对于如下的请求参数进行签名**
-
-```
-curl "https://api.Exchange.com/api/v1/spot/ccex/orders?limit=100"   
-```
-- 获取获取深度信息，以 LTC-BTC 币对为例
-
-```
-Timestamp = 1540286290170 
-Method = "GET"
-requestPath = "/api/v1/spot/public/products/LTC-BTC/orderbook"
-queryString= "?size=100"
-```
 生成待签名的字符串
+1、先将参数以其参数名的字典序升序进行排序
+2、遍历排序后的字典，将所有参数按"keyvalue"格式拼接在一起（非空参数）
+3、使用MD5对待签名串求签
 
-```
-Message = '1540286290170GET/api/v1/spot/public/products/LTC-BTC/orderbook?size=100'  
-```
-
-- 下单，以 LTC-BTC 币对为例
-
-```
-Timestamp = 1540286476248 
-Method = "POST"
-requestPath = "/api/v1/spot/ccex/orders"
-body = {"code":"LTC_BTC","side":"buy","type":"limit","size":"1","price":"1.001"}
-```
-生成待签名的字符串
-
-```
-Message = '1540286476248POST/api/v1/spot/ccex/orders{"code":"LTC-BTC","side":"buy","type":"limit","size":"1","price":"1.001"}'
-```
-然后，将待签名字符串添加私钥参数生成最终待签名字符串。
-
-例如：
-
-```
-Signature = hmac(secretkey, Message, SHA256)
-```
-
-在使用前需要对于Signature进行base64编码
-
-```
-Signature = base64.encode(Signature.digest())
-```
 
 
 ## <span id="a6">请求交互</span>
