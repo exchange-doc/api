@@ -92,13 +92,15 @@ API Key 和 Secret Key将由随机生成和提供
 ## <span id="a4">签名</span>
 
 生成待签名的字符串
+    -   [open-api Demo](#open-api-java)
+    
 1、先将参数以其参数名的字典序升序进行排序
 
 2、遍历排序后的字典，将所有参数按"keyvalue"格式拼接在一起（非空参数）
 
 3、使用MD5对待签名串求签
 
-## <span id="open-api-java">open-api Demo（java） </span>
+
 
 
 ## <span id="a6">请求交互</span>
