@@ -99,57 +99,6 @@ Generate a string to be signed
 
 3、Use MD5 to treat signature strings
 
-- “method” is the command for requesting function (POST/GET/PUT/DELETE) all letters must be capitalize.
--“requestPath” is the command for requesting the port path
--“queryString GET” is the command for acquire the string.
-- “body” is the command for acquire principal string. Ignore this command once there is no principal string(usually occurs in GET request)
- 
-**For example, if we sign the following parameters**
-
-```
-curl "https://api.Exchange.com/api/v1/spot/ccex/orders?limit=100"   
-```
-- To acquire the depth info, for instance LTC/BTC.
-
-```
-Timestamp = 1540286290170 
-Method = "GET"
-requestPath = "/api/v1/spot/public/products/LTC-BTC/orderbook"
-queryString= "?size=100"
-```
-Generate the string to be signed
-
-```
-Message = '1540286290170GET/api/v1/spot/public/products/LTC-BTC/orderbook?size=100'  
-```
-
-- To employ an order, for instance LTC/BTC.
-
-```
-Timestamp = 1540286476248 
-Method = "POST"
-requestPath = "/api/v1/spot/ccex/orders"
-body = {"code":"LTC_BTC","side":"buy","type":"limit","size":"1","price":"1.001"}
-```
-Generate the string to be signed
-
-```
-Message = '1540286476248POST/api/v1/spot/ccex/orders{"code":"LTC-BTC","side":"buy","type":"limit","size":"1","price":"1.001"}'
-```
-Then, the character to be signed is added with the private key parameters to generate the final character string to be signed.
-
-For example:
-
-```
-Signature = hmac(secretkey, Message, SHA256)
-```
-
-Please use base64 coding before “Signature”.
-
-```
-Signature = base64.encode(Signature.digest())
-```
-
 
 ## <span id="a6">Request Process</span>
 
