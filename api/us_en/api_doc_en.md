@@ -99,6 +99,16 @@ Generate a string to be signed
 
 3、Use MD5 to treat signature strings
 
+**For example:**
+
+api_key = 1234567
+
+time = 12312312312137
+
+secret_key = 789654
+
+sign=md5(api_key1234567time12312312312137789654)
+
 
 ## <span id="a6">Request Process</span>
 
