@@ -17,7 +17,6 @@
 -	[Place orders in batches and withdraw designated orders in batches](#13)
 -	[Get the current delegation](#14)
 -	[Obtain order details](#15)
--	[Internal Self-Transaction Interface-(saasProper)](#16)
 -	[All Transaction Pairs and Accuracy Supported by Query System](#17)
 -	[Get user assets and recharge records](#18)
 ## 2. ws-api Catalog  (example：wss://ws.***.com/kline-api/ws)
@@ -805,42 +804,6 @@ Return value:
 ```
 
 
-
-
----
-###  <span id="16">Internal Self-Transaction Interface-(saasProper)</span>
-
-
-1. Interface address:/open/api/self_trade
-2. Interface specification:(post request)Internal Self-Transaction Interface-(saasProper)
-
-|parameter|	Fill in type|	Explain|
-|------------|--------|--------------------------------------|
-|side|	Must fill|	Direction of business BUY、SELL|
-|type|	Must fill|	Type of list，1:limit order|
-|volume| 	Must fill|	Buy Quantity (Polysemy, Multiplexing Fields)<br>type=1:Represents the quantity of sales and purchases<br>Trading restrictionsuser/me-User information|
-|price|	Selective filling|	 
-|symbol|	Must fill|	Market mark，ethbtc|
-|fee_is_user_exchange_coin|	Selective filling|	0，When the exchange has the platform currency, this parameter indicates whether to use the platform currency to pay the handling fee, 0 no, 1 yes|
-|api_key|	Must fill|	api_key|
-|time|	Must fill|	time stamp|
-|sign|	Must fill|	autograph|
-
-Return value:
-
-|field|	Example|	explain|
-|------------|--------|---------------|
-|code|	0|	 
-|msg|	"suc"|	code>0fail|
-|data|	{"order_id":34343}|Successful return to the transactionID|
-
-|Virtual Currency Number|xxx-cny（xxx101）|xxx-btc（xxx201）|
-|------------|--------|-----------|
-|bcc|	bcccny|	bccbtc|
-|btc|	btccny|	-|
-|etc|	etccny|	etcbtc|
-|eth|	ethcny|	ethbtc|
-|ltc|	ltccny|	ltcbtc|
 
 
 ---
