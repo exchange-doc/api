@@ -23,7 +23,6 @@
 [/open/api/mass_replaceV2 (post)](https://github.com/exchange-doc/api/blob/master/open-api%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3%EF%BC%88%E7%8E%B0%E8%B4%A7%EF%BC%89/mass_replaceV2%E6%89%B9%E9%87%8F%E4%B8%8B%E5%8D%95%EF%BC%8C%E5%90%8C%E6%97%B6%E6%89%B9%E9%87%8F%E6%92%A4%E5%9B%9E%E6%8C%87%E5%AE%9A%E8%AE%A2%E5%8D%95.md)	|批量下单，同时批量撤回指定订单|
 [/open/api/v2/new_order (get)](https://github.com/exchange-doc/api/blob/master/open-api接口文档（现货）/new_order-%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E5%A7%94%E6%89%98.md)	|获取当前委托|
 [/open/api/order_info (get)](https://github.com/exchange-doc/api/blob/master/open-api接口文档（现货）/order_info-%E8%8E%B7%E5%8F%96%E8%AE%A2%E5%8D%95%E8%AF%A6%E6%83%85.md)	|获取订单详情|
-[/open/api/self_trade(post)](https://github.com/exchange-doc/api/blob/master/open-api接口文档（现货）/self_trade-%E5%86%85%E9%83%A8%E8%87%AA%E6%88%90%E4%BA%A4%E6%8E%A5%E5%8F%A3-(saas%E4%B8%93%E6%9C%89).md)	|内部自成交接口-(saas专有)|
 [/open/api/common/symbols(get)](https://github.com/exchange-doc/api/blob/master/open-api接口文档（现货）/symbols%20%E6%9F%A5%E8%AF%A2%E7%B3%BB%E7%BB%9F%E6%94%AF%E6%8C%81%E7%9A%84%E6%89%80%E6%9C%89%E4%BA%A4%E6%98%93%E5%AF%B9%E5%8F%8A%E7%B2%BE%E5%BA%A6.md)	|查询系统支持的所有交易对及精度|
 [/open/api/user_balance_info(post)](https://github.com/exchange-doc/api/blob/master/open-api接口文档（现货）/user_balance_info-%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E8%B5%84%E4%BA%A7%E4%BB%A5%E5%8F%8A%E5%85%85%E5%80%BC%E8%AE%B0%E5%BD%95.md)	|获取用户资产以及充值记录|
 
