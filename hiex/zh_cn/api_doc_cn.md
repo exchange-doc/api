@@ -1,6 +1,6 @@
-#  Exchange官方API文档
+#  HIEX官方API文档
 
-#### Exchange交易所开发文档([English Docs](https://github.com/exchange-doc/api/blob/master/hiex/us_en/api_doc_en.md))
+#### HIEX交易所开发文档([English Docs](https://github.com/exchange-doc/api/blob/master/hiex/us_en/api_doc_en.md))
 - [介绍](#Introduction)
 - [开始使用](#startToUse)
 - [API接口加密验证](#a1)
@@ -52,7 +52,7 @@
 
 # <span id="Introduction">介绍</span>
 
-欢迎使用[Exchange](https://www.hiex.com/index)开发者文档
+欢迎使用[HIEX](https://www.hiex.com/index)开发者文档
 
 本文档提供了相关API的使用方法介绍。open-api包含了资产余额，获取全部委托，获取全部成交记录等接口，ws-api则提供了K线相关功能接口。
 
