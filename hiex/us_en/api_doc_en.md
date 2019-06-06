@@ -1,6 +1,6 @@
-#  Exchange-official-API-docs
+#  HIEX-official-API-docs
 
-#### Official Documentation for the Exchange APIs and Streams([简体中文版文档](https://github.com/exchange-doc/api/blob/master/hiex/zh_cn/api_doc_cn.md))
+#### Official Documentation for the HIEX APIs and Streams([简体中文版文档](https://github.com/exchange-doc/api/blob/master/hiex/zh_cn/api_doc_cn.md))
 - [Introduction](#Introduction)
 - [Getting Started](#startToUse)
 - [Encrypted Verification of API](#a1)
@@ -50,7 +50,7 @@
 
 # <span id="Introduction">Introduction</span>
 
-Welcome to [Exchange](https://www.hiex.com/index) API document for developers.
+Welcome to [HIEX](https://www.hiex.com/index) API document for developers.
 
 This file provides the related API application introduction. Open-API includes the port to acquire balance, all orders ,and all transaction record. Ws-API response for the port of K line functions.
 
@@ -72,7 +72,7 @@ Developers are recommended to use REST API to proceed spot trading and withdrawa
 
 ## <span id="a2">Generate an API Key</span>
 
-Before signing any request, you must generate an API key via [Exchange’s official website ](https://www.hiex.com/index)【User Center】-【API】. After generating the key, there are three things you must bear in mind:
+Before signing any request, you must generate an API key via [HIEX’s official website ](https://www.hiex.com/index)【User Center】-【API】. After generating the key, there are three things you must bear in mind:
 
 - API Key
  
