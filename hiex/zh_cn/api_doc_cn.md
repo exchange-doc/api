@@ -1093,6 +1093,7 @@ REST API
 ```
 
 ## <span id="b7">ws-api</span>
+访问的根URL：wss://ws.hiex.com
 
 ---
 ###  <span id="19">订阅-K线行情</span>
