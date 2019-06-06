@@ -1100,6 +1100,8 @@ Return value:
 }
 ```
 
+## <span id="b7">ws-api</span>
+Access Root URL：wss://ws.hiex.com
 
 ---
 ###  <span id="19">Subscription - K Line Market</span>
