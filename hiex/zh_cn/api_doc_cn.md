@@ -73,7 +73,7 @@ REST，即Representational State Transfer的缩写，是一种流行的互联网
 # <span id="a1">API接口加密验证</span>
 
 ## <span id="a2">生成API Key</span>
-在对任何请求进行签名之前，您必须通过 [Exchange 网站](https://www.hiex.com/index)【用户中心】-【API】创建一个API key。 创建key后，您将获得3个必须记住的信息：
+在对任何请求进行签名之前，您必须通过 [HIEX 网站](https://www.hiex.com/index)【用户中心】-【API】创建一个API key。 创建key后，您将获得3个必须记住的信息：
 
 - API Key
  
