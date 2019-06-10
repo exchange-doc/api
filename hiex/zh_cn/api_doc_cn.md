@@ -52,7 +52,7 @@
 
 # <span id="Introduction">介绍</span>
 
-欢迎使用[HIEX](https://www.hiex.com/index)开发者文档
+欢迎使用[HIEX](https://www.hiex.pro/index)开发者文档
 
 本文档提供了相关API的使用方法介绍。open-api包含了资产余额，获取全部委托，获取全部成交记录等接口，ws-api则提供了K线相关功能接口。
 
@@ -113,7 +113,7 @@ sign=md5(api_key1234567time12312312312137789654)
 
 ## <span id="a6">请求交互</span>
 
-REST访问的根URL：``` https://openapi.hiex.com ```
+REST访问的根URL：``` https://openapi.hiex.pro ```
 
 ###  <span id="a7">请求</span>
 所有请求基于Https协议，请求头信息中Content-Type 需要统一设置为:'application/json’。
@@ -1093,7 +1093,7 @@ REST API
 ```
 
 ## <span id="b7">ws-api</span>
-访问的根URL：wss://ws.hiex.com
+访问的根URL：wss://ws.hiex.pro
 
 ---
 ###  <span id="19">订阅-K线行情</span>
