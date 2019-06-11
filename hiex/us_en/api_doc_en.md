@@ -50,7 +50,7 @@
 
 # <span id="Introduction">Introduction</span>
 
-Welcome to [HIEX](https://www.hiex.com/index) API document for developers.
+Welcome to [HIEX](https://www.hiex.pro/index) API document for developers.
 
 This file provides the related API application introduction. Open-API includes the port to acquire balance, all orders ,and all transaction record. Ws-API response for the port of K line functions.
 
@@ -72,7 +72,7 @@ Developers are recommended to use REST API to proceed spot trading and withdrawa
 
 ## <span id="a2">Generate an API Key</span>
 
-Before signing any request, you must generate an API key via [HIEX’s official website ](https://www.hiex.com/index)【User Center】-【API】. After generating the key, there are three things you must bear in mind:
+Before signing any request, you must generate an API key via [HIEX’s official website ](https://www.hiex.pro/index)【User Center】-【API】. After generating the key, there are three things you must bear in mind:
 
 - API Key
  
@@ -111,7 +111,7 @@ sign=md5(api_key1234567time12312312312137789654)
 
 ## <span id="a6">Request Process</span>
 
-The root URL for REST access：``` https://openapi.hiex.com ```
+The root URL for REST access：``` https://openapi.hiex.pro ```
 
 ###  <span id="a7">Request</span>
 All requests are based on Https protocol, contentType in the request header must be uniformly set as: ‘application/json’.
@@ -1101,7 +1101,7 @@ Return value:
 ```
 
 ## <span id="b7">ws-api</span>
-The root URL for ws access：wss://ws.hiex.com
+The root URL for ws access：wss://ws.hiex.pro
 
 ---
 ###  <span id="19">Subscription - K Line Market</span>
@@ -1443,7 +1443,7 @@ public class Main {
         params.put("sign", sign);
 
 /** http request */
-        String resultJson = get("https://openapi.hiex.com/open/api/get_trades?symbol=btcusdt", params);
+        String resultJson = get("https://openapi.hiex.pro/open/api/get_trades", params);
         System.out.println(resultJson);
     }
 
@@ -1609,7 +1609,7 @@ public class WsTest {
     public static void main(String[] args) {
         try {
 //wsurl 
-            String url = "wss://ws.hiex.com/kline-api/ws";
+            String url = "wss://ws.hiex.pro/kline-api/ws";
 //Historical data request parameters 
             String reqParam = "{"event":"req","params":{"channel":"market_btcusdt_trade_ticker","cb_id":"btcusdt","top":150}}";
 //Subscription parameters 
@@ -1621,7 +1621,7 @@ public class WsTest {
 //Subscribe to real-time data 
             wsc.send(subParam);
 
-//Thread does not end, waiting for new messages，www.hiex.com Generally, a new deal will return in about a minute
+//Thread does not end, waiting for new messages，www.\ Generally, a new deal will return in about a minute
             while (true) {
                 Thread.sleep(1000);
             }
