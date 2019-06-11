@@ -1430,7 +1430,7 @@ public class Main {
         params.put("sign", sign);
 
         /** http请求 */
-        String resultJson = get("https://openapi.hiex.com/open/api/get_trades?symbol=btcusdt", params);
+        String resultJson = get("https://openapi.hiex.com/open/api/get_trades", params);
         System.out.println(resultJson);
     }
 
