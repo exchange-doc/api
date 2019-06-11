@@ -73,7 +73,7 @@ REST，即Representational State Transfer的缩写，是一种流行的互联网
 # <span id="a1">API接口加密验证</span>
 
 ## <span id="a2">生成API Key</span>
-在对任何请求进行签名之前，您必须通过 [HIEX 网站](https://www.hiex.com/index)【用户中心】-【API】创建一个API key。 创建key后，您将获得3个必须记住的信息：
+在对任何请求进行签名之前，您必须通过 [HIEX 网站](https://www.hiex.pro/index)【用户中心】-【API】创建一个API key。 创建key后，您将获得3个必须记住的信息：
 
 - API Key
  
@@ -1430,7 +1430,7 @@ public class Main {
         params.put("sign", sign);
 
         /** http请求 */
-        String resultJson = get("https://openapi.hiex.com/open/api/get_trades", params);
+        String resultJson = get("https://openapi.hiex.pro/open/api/get_trades", params);
         System.out.println(resultJson);
     }
 
@@ -1599,7 +1599,7 @@ public class WsTest {
     public static void main(String[] args) {
         try {
 //wsurl 
-            String url = "wss://ws.hiex.com/kline-api/ws";
+            String url = "wss://ws.hiex.pro/kline-api/ws";
 //历史数据请求参数 
             String reqParam = "{"event":"req","params":{"channel":"market_btcusdt_trade_ticker","cb_id":"btcusdt","top":150}}";
 //订阅参数 
@@ -1611,7 +1611,7 @@ public class WsTest {
 //订阅实时数据 
             wsc.send(subParam);
 
-//线程不结束，等待新的消息，www.hiex.com 一般一分钟左右会有新的成交返回
+//线程不结束，等待新的消息，www.hiex.pro 一般一分钟左右会有新的成交返回
             while (true) {
                 Thread.sleep(1000);
             }
