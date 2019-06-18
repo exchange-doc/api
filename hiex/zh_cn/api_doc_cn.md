@@ -40,6 +40,8 @@
     -   [open-api 杠杆接口]
     -   [批量下单，同时批量撤回指定订单](#30)
     -   [获取杠杆全部成交记录](#31)
+    -   [获取杠杆当前委托](#32)
+    -   [根据币对获取杠杆资产](#33)
     
   - [ws-api](#b7) ([Java-Demo](#ws-api-java))
     -   [订阅-K线行情](#19)
@@ -1125,13 +1127,14 @@ REST API
 
 
 ---
-### <span id="31">获取全部成交记录</span>
+### <span id="31">获取杠杆全部成交记录</span>
 
-1. 接口地址:/open/api/all_trade
+1. 接口地址:/open/api/margin/all_trade
 2. 接口说明:(get请求)获取全部成交记录
 
 |参数|    填写类型|   说明|
 |------------|--------|-----------------------------|
+|type  |    必填| 查询成交记录的类型，不填次参数返回币币交易成交; 例如：type = 2 杠杆订单 1币币订单
 |symbol|    必填| 市场标记，btcusdt，详情看下面|
 |startDate| 选填| （新增）开始时间，精确到秒“yyyy-MM-dd HH:mm:ss”|
 |endDate|   选填| （新增）结束时间，精确到秒“yyyy-MM-dd HH:mm:ss”|
@@ -1202,6 +1205,112 @@ REST API
     ]
 }
 
+---
+### <span id="32">获取全部委托</span>
+
+1. 接口地址:/open/api/margin/new_order
+2. 接口说明:(get请求)获取全部委托
+
+* v2版本变化: 去掉了结果返回值中的tradeList成交记录,提升效率;如果需要单一订单的成交信息,可以使用 /open/api/order_info 接口单独去查
+
+|参数|    填写类型|   说明|
+|------------|--------|-----------------------------|
+|type  |    必填| 查询成交记录的类型，不填次参数返回币币交易成交; 例如：type = 2 杠杆订单 1币币订单
+|symbol|    必填| 市场标记，btcusdt，详情看下面|
+|startDate| 选填| （新增）开始时间，精确到秒“yyyy-MM-dd mm:hh:ss”|
+|endDate|   选填| （新增）结束时间，精确到秒“yyyy-MM-dd mm:hh:ss”|
+|pageSize|  选填| 页面大小|
+|page|  选填| 页码|
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sign|  必填| 签名|
+
+返回值:
+
+|字段|    实例| 解释|
+|-----|------|---------|
+|code|  0|   |
+|msg|   "suc"|  code>0失败|
+|data|  如下:|
+```
+{
+    "count":10,
+    "orderList":[
+        {
+            "side":"BUY",
+            "total_price":"0.10000000",
+            "created_at":1510993841000,
+            "avg_price":"0.10000000",
+            "countCoin":"btc",
+            "source":1,
+            "type":1,
+            "side_msg":"买入",
+            "volume":"1.000",
+            "price":"0.10000000",
+            "source_msg":"WEB",
+            "status_msg":"完全成交",
+            "deal_volume":"1.00000000",
+            "id":424,
+            "remain_volume":"0.00000000",
+            "baseCoin":"eth",
+            "status":2
+        },
+        {
+            "side":"SELL",
+            "total_price":"0.09900000",
+            "created_at":1510993715000,
+            "avg_price":"0.10000000",
+            "countCoin":"btc",
+            "source":1,
+            "type":1,
+            "side_msg":"卖出",
+            "volume":"1.000",
+            "price":"0.09900000",
+            "source_msg":"WEB",
+            "status_msg":"完全成交",
+            "deal_volume":"1.00000000",
+            "id":423,
+            "remain_volume":"0.00000000",
+            "baseCoin":"eth",
+            "status":2
+        }
+    ]
+}
+```
+
+### <span id="33">获取杠杆资产余额</span>
+
+1. 接口地址: /open/api/margin/symbol/balance
+2. 接口说明: (get请求)资产余额
+
+|参数|    填写类型|   说明|
+|--------|--------|--------|
+|symbol |   必填| 币对名称
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sign|  必填| 签名|
+
+返回值:
+
+|字段|    实例| 解释|
+|--------|--------|--------|
+|code|  0|   |
+|msg|   "suc"|  code>0失败|
+|data| 如下:|
+        {
+            'baseTotalBalance':'8.89800000',//base总资产
+            'baseNormalBalance':'8.89800000', //可用
+            'baseLockBalance':'8.89800000', //冻结
+            'quoteTotalBalance':'8.89800000',//quote总资产
+            'quoteNormalBalance':'8.89800000', //可用
+            'quoteLockBalance':'8.89800000', //冻结
+            'quoteCoin':'USDT',//计价货币
+            'baseCoin':'BTC', //基准货币
+            'symbol': 'BTCUSDT'
+            'riskRate':'110',//风险率
+            'burstPrice':'1111',//爆仓价
+         }
+         
 
 ---
 ## <span id="b7">ws-api</span>
@@ -1390,8 +1499,6 @@ REST API
     }
 }
 ```
-
-
 
 ---
 ### <span id="24">请求-K线历史数据</span>
