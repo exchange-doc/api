@@ -39,7 +39,7 @@
     
     -   [open-api 杠杆接口]
     -   [批量下单，同时批量撤回指定订单](#30)
-    -   [批量下单，同时批量撤回指定订单](#30)
+    -   [获取杠杆全部成交记录](#31)
     
   - [ws-api](#b7) ([Java-Demo](#ws-api-java))
     -   [订阅-K线行情](#19)
@@ -1098,7 +1098,7 @@ REST API
 ```
 
 ---
-### <span id="27">批量下单，同时批量撤回指定订单-杠杆</span>
+### <span id="30">批量下单，同时批量撤回指定订单-杠杆</span>
 1. 接口地址:/open/api/margin/mass_replace
 2. 接口说明:(post请求)批量下单，同时批量撤回指定订单
 
@@ -1122,6 +1122,85 @@ REST API
 |code|	0|	 
 |msg|	"suc"|	code>0失败|
 |data|	"mass_place": [{"msg": "Success","code": "0","order_id": [504,505]},{"msg": "Order cancellation failed","code": "8","order_id": [504,505]}]<br>"mass_cancel": [{"msg": "Success","code": "0","order_id": [572,573,574,626,629]}]|下单返回：订单id，状态码，成功或失败信息。<br>撤单返回：订单id，状态码，成功或失败信息<br>0表示成功。|
+
+
+---
+### <span id="31">获取全部成交记录</span>
+
+1. 接口地址:/open/api/all_trade
+2. 接口说明:(get请求)获取全部成交记录
+
+|参数|    填写类型|   说明|
+|------------|--------|-----------------------------|
+|symbol|    必填| 市场标记，btcusdt，详情看下面|
+|startDate| 选填| （新增）开始时间，精确到秒“yyyy-MM-dd HH:mm:ss”|
+|endDate|   选填| （新增）结束时间，精确到秒“yyyy-MM-dd HH:mm:ss”|
+|pageSize|  选填| 页面大小|
+|page|  选填| 页码|
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sort|  选填| 1表示倒序|
+|sign|  必填| 签名|
+
+返回值:
+
+|字段|    实例| 解释|
+|-----|------|---------|
+|code|  0|   |
+|msg|   "suc"|  code>0失败|
+| data| 如下:|
+```
+{
+    "count":22,
+    "resultList":[
+        {
+            "volume":"1.000",
+            "side":"BUY",
+            "feeCoin":"YLB",
+            "price":"0.10000000",
+            "fee":"0.16431104",
+            "ctime":1510996571195,
+            "deal_price":"0.10000000",
+            "id":306,
+            "type":"买入",
+            "bid_id":1001,
+            "ask_id":1002,
+            "bid_user_id":10001,
+            "ask_user_id":10001
+ 
+        },
+        {
+            "volume":"0.850",
+            "side":"BUY",
+            "feeCoin":"YLB",
+            "price":"0.10000000",
+            "fee":"0.13966438",
+            "ctime":1510996571190,
+            "deal_price":"0.08500000",
+            "id":305,
+            "type":"买入",
+            "bid_id":1001,
+            "ask_id":1002,
+            "bid_user_id":10001,
+            "ask_user_id":10001
+        },
+        {
+            "volume":"0.010",
+            "side":"BUY",
+            "feeCoin":"YLB",
+            "price":"0.10000000",
+            "fee":"0.00164311",
+            "ctime":1510995560344,
+            "deal_price":"0.00100000",
+            "id":291,
+            "type":"买入",
+            "bid_id":1001,
+            "ask_id":1002,
+            "bid_user_id":10001,
+            "ask_user_id":10001
+        }
+    ]
+}
 
 
 ---
