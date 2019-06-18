@@ -36,6 +36,13 @@
     -	[Obtain order details](#15)
     -	[All Transaction Pairs and Accuracy Supported by Query System](#17)
     -	[Get user assets and recharge records](#18)
+    
+    -   [open-api margin api]
+    -   [Place orders in batches and withdraw designated orders in batches-margin](#30)
+    -   [Obtain all margin transaction records](#31)
+    -   [Acquire full margin delegation](#32)
+    -   [Balance of the assets-margin](#33)
+    
   - [ws-api](#b7) ([Java-Demo](#ws-api-java))
     -   [Subscription - K Line Market](#19)
     -   [Subscription - market quotations in the last 24 hours](#20)
