@@ -1107,6 +1107,219 @@ Return value:
 }
 ```
 
+---
+### <span id="30">Place orders in batches and withdraw designated orders in batches-margin</span>
+1. Interface address:/open/api/margin/mass_replace
+* mass_placeIt's a batch of limited price orders that need to be sent to the system, up to 1000 at a time
+* mass_cancelIt's a batch of orders that need to be withdrawn, up to 1000 at a time
+
+|parameter|	Fill in type|	Explain|
+|------------|--------|--------------------------------------|
+|api_key|	Must fill|	api_key|
+|time|	Must fill|	time stamp|
+|sign|	Must fill|	autograph|
+|symbol|	Must fill|	currency ，example btcusdt|
+|mass_cancel|	Selective filling|	[1234,234....] Withdrawal parameters，Orderid|
+|mass_place|	Selective filling|	[{side:"BUY",type:"1",volume:"0.01",price:"6400",fee_is_user_exchange_coin:"0"}, {}, …]<br>Meaning：<br>symbol:currency，example btcusdt<br>mass_place:Order parameter。side：direction（Direction of businessBUY、SELL），<br>--------------------------------type：type（1:limit order、2:market order）<br>--------------------------------volume：Purchase quantity（Polysemy，Multiplex field） type=1:Represents the quantity of sales and purchasestype=2:Buy means the total price，Selling represents the total number<br>--------------------------------price：Authorized unit price：type=2：No need for this parameter<br>--------------------------------fee_is_user_exchange_coin：(Redundant fields) When the exchange has a platform currency，This parameter indicates whether to use platform currency to pay handling fee, 0 no, 1 yes.|
+
+Return value:
+
+|field|	Example|	explain|
+|------------|--------|---------------|
+|code|	0|	 
+|msg|	"suc"|	code>0fail|
+|data|	"mass_place": [{"msg": "Success","code": "0","order_id": [504,505]},{"msg": "Order cancellation failed","code": "8","order_id": [504,505]}]<br>"mass_cancel": [{"msg": "Success","code": "0","order_id": [572,573,574,626,629]}]|Order return：Orderid，Status code，Success or Failure Information。<br>Withdrawal of returns：Orderid，Status code，c<br>0Express success。|
+
+---
+### <span id="31">Obtain all margin transaction records</span>
+
+1. Interface address:/open/api/margin/all_trade
+2. Interface Description: (get request) Get all transaction records
+
+|parameter|	Fill in type|	Explain|
+|------------|--------|-----------------------------|
+|type  |    必填| 查询成交记录的类型，不填次参数返回币币交易成交; 例如：type = 2 杠杆订单 1币币订单
+|symbol|	Must fill|	Market mark，btcusdt，See below for details|
+|startDate|	Selective filling|	(Added) Start time, accurate to seconds“yyyy-MM-dd HH:mm:ss”|
+|endDate|	Selective filling|	(Added) End time, accurate to seconds“yyyy-MM-dd HH:mm:ss”|
+|pageSize|	Selective filling|	Page size|
+|page|	Selective filling|	Page number|
+|api_key|	Must fill|	api_key|
+|time|	Must fill|	time stamp|
+|sort|	Selective filling|	1Representing reverse order|
+|sign|	Must fill|	autograph|
+
+Return value:
+
+|field|	Example|	explain|
+|-----|------|---------|
+|code|	0|	 |
+|msg|	"suc"|	code>0fail|
+| data|	as follows:|
+```
+{
+    "count":22,
+    "resultList":[
+        {
+            "volume":"1.000",
+            "side":"BUY",
+            "feeCoin":"YLB",
+            "price":"0.10000000",
+            "fee":"0.16431104",
+            "ctime":1510996571195,
+            "deal_price":"0.10000000",
+            "id":306,
+            "type":"Purchase",
+            "bid_id":1001,
+            "ask_id":1002,
+            "bid_user_id":10001,
+            "ask_user_id":10001
+ 
+        },
+        {
+            "volume":"0.850",
+            "side":"BUY",
+            "feeCoin":"YLB",
+            "price":"0.10000000",
+            "fee":"0.13966438",
+            "ctime":1510996571190,
+            "deal_price":"0.08500000",
+            "id":305,
+            "type":"Purchase",
+            "bid_id":1001,
+            "ask_id":1002,
+            "bid_user_id":10001,
+            "ask_user_id":10001
+        },
+        {
+            "volume":"0.010",
+            "side":"BUY",
+            "feeCoin":"YLB",
+            "price":"0.10000000",
+            "fee":"0.00164311",
+            "ctime":1510995560344,
+            "deal_price":"0.00100000",
+            "id":291,
+            "type":"Purchase",
+            "bid_id":1001,
+            "ask_id":1002,
+            "bid_user_id":10001,
+            "ask_user_id":10001
+        }
+    ]
+}
+```
+
+---
+### <span id="32">获取全部委托</span>
+
+1. 接口地址:/open/api/margin/new_order
+2. 接口说明:(get请求)获取全部委托
+
+* v2版本变化: 去掉了结果返回值中的tradeList成交记录,提升效率;如果需要单一订单的成交信息,可以使用 /open/api/order_info 接口单独去查
+
+|参数|    填写类型|   说明|
+|------------|--------|-----------------------------|
+|type  |    必填| 查询成交记录的类型，不填次参数返回币币交易成交; 例如：type = 2 杠杆订单 1币币订单
+|symbol|    必填| 市场标记，btcusdt，详情看下面|
+|startDate| 选填| （新增）开始时间，精确到秒“yyyy-MM-dd mm:hh:ss”|
+|endDate|   选填| （新增）结束时间，精确到秒“yyyy-MM-dd mm:hh:ss”|
+|pageSize|  选填| 页面大小|
+|page|  选填| 页码|
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sign|  必填| 签名|
+
+返回值:
+
+|字段|    实例| 解释|
+|-----|------|---------|
+|code|  0|   |
+|msg|   "suc"|  code>0失败|
+|data|  如下:|
+```
+{
+    "count":10,
+    "orderList":[
+        {
+            "side":"BUY",
+            "total_price":"0.10000000",
+            "created_at":1510993841000,
+            "avg_price":"0.10000000",
+            "countCoin":"btc",
+            "source":1,
+            "type":1,
+            "side_msg":"买入",
+            "volume":"1.000",
+            "price":"0.10000000",
+            "source_msg":"WEB",
+            "status_msg":"完全成交",
+            "deal_volume":"1.00000000",
+            "id":424,
+            "remain_volume":"0.00000000",
+            "baseCoin":"eth",
+            "status":2
+        },
+        {
+            "side":"SELL",
+            "total_price":"0.09900000",
+            "created_at":1510993715000,
+            "avg_price":"0.10000000",
+            "countCoin":"btc",
+            "source":1,
+            "type":1,
+            "side_msg":"卖出",
+            "volume":"1.000",
+            "price":"0.09900000",
+            "source_msg":"WEB",
+            "status_msg":"完全成交",
+            "deal_volume":"1.00000000",
+            "id":423,
+            "remain_volume":"0.00000000",
+            "baseCoin":"eth",
+            "status":2
+        }
+    ]
+}
+```
+---
+### <span id="33">获取杠杆资产余额</span>
+
+1. 接口地址: /open/api/margin/symbol/balance
+2. 接口说明: (get请求)资产余额
+
+|参数|    填写类型|   说明|
+|--------|--------|--------|
+|symbol |   必填| 币对名称
+|api_key|   必填| api_key|
+|time|  必填| 时间戳|
+|sign|  必填| 签名|
+
+返回值:
+
+|字段|    实例| 解释|
+|--------|--------|--------|
+|code|  0|   |
+|msg|   "suc"|  code>0失败|
+|data| 如下:|
+        ```
+        {
+            'baseTotalBalance':'8.89800000',//base总资产
+            'baseNormalBalance':'8.89800000', //可用
+            'baseLockBalance':'8.89800000', //冻结
+            'quoteTotalBalance':'8.89800000',//quote总资产
+            'quoteNormalBalance':'8.89800000', //可用
+            'quoteLockBalance':'8.89800000', //冻结
+            'quoteCoin':'USDT',//计价货币
+            'baseCoin':'BTC', //基准货币
+            'symbol': 'BTCUSDT'
+            'riskRate':'110',//风险率
+            'burstPrice':'1111',//爆仓价
+         }
+         ```
+
+
+
 ## <span id="b7">ws-api</span>
 The root URL for ws access：wss://ws.hiex.pro
 
