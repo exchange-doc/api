@@ -1204,7 +1204,7 @@ REST API
         }
     ]
 }
-
+```
 ---
 ### <span id="32">获取全部委托</span>
 
@@ -1277,7 +1277,7 @@ REST API
     ]
 }
 ```
-
+---
 ### <span id="33">获取杠杆资产余额</span>
 
 1. 接口地址: /open/api/margin/symbol/balance
@@ -1297,6 +1297,7 @@ REST API
 |code|  0|   |
 |msg|   "suc"|  code>0失败|
 |data| 如下:|
+        ```
         {
             'baseTotalBalance':'8.89800000',//base总资产
             'baseNormalBalance':'8.89800000', //可用
@@ -1310,7 +1311,7 @@ REST API
             'riskRate':'110',//风险率
             'burstPrice':'1111',//爆仓价
          }
-         
+         ```
 
 ---
 ## <span id="b7">ws-api</span>
