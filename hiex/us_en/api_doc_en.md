@@ -1138,7 +1138,7 @@ Return value:
 
 |parameter|	Fill in type|	Explain|
 |------------|--------|-----------------------------|
-|type  |    必填| 查询成交记录的类型，不填次参数返回币币交易成交; 例如：type = 2 杠杆订单 1币币订单
+|type  |    Must fill| type = 2:margin order 1:symbol order
 |symbol|	Must fill|	Market mark，btcusdt，See below for details|
 |startDate|	Selective filling|	(Added) Start time, accurate to seconds“yyyy-MM-dd HH:mm:ss”|
 |endDate|	Selective filling|	(Added) End time, accurate to seconds“yyyy-MM-dd HH:mm:ss”|
@@ -1210,37 +1210,38 @@ Return value:
 }
 ```
 
+
 ---
-### <span id="32">获取全部委托</span>
+### <span id="32">Get the current margin delegation</span>
 
-1. 接口地址:/open/api/margin/new_order
-2. 接口说明:(get请求)获取全部委托
 
-* v2版本变化: 去掉了结果返回值中的tradeList成交记录,提升效率;如果需要单一订单的成交信息,可以使用 /open/api/order_info 接口单独去查
+1. Interface address:/open/api/margin/new_order
+2. Interface specification:(getrequest)Get the current margin delegation（Including uncompleted and ongoing commissions）
 
-|参数|    填写类型|   说明|
-|------------|--------|-----------------------------|
-|type  |    必填| 查询成交记录的类型，不填次参数返回币币交易成交; 例如：type = 2 杠杆订单 1币币订单
-|symbol|    必填| 市场标记，btcusdt，详情看下面|
-|startDate| 选填| （新增）开始时间，精确到秒“yyyy-MM-dd mm:hh:ss”|
-|endDate|   选填| （新增）结束时间，精确到秒“yyyy-MM-dd mm:hh:ss”|
-|pageSize|  选填| 页面大小|
-|page|  选填| 页码|
-|api_key|   必填| api_key|
-|time|  必填| 时间戳|
-|sign|  必填| 签名|
 
-返回值:
+* v2Version change: Remove the tradeList transaction record from the result return value to improve efficiency;If you need transaction information for a single order, you can use /open/api/order_info interface and check it
 
-|字段|    实例| 解释|
-|-----|------|---------|
-|code|  0|   |
-|msg|   "suc"|  code>0失败|
-|data|  如下:|
+|parameter|	Fill in type|	Explain|
+|------------|--------|--------------------------------------|
+|type  |    Must fill|  type = 2:margin order 1:symbol order
+|symbo|l	Must fill|	Market mark，btcusdt，See below for details|
+|pageSize|	Selective filling|	Page size|
+|page|	Selective filling|	Page number|
+|api_key|	Must fill|	api_key|
+|time|	Must fill|	time stamp|
+|sign|	Must fill|	autograph|
+
+Return value:
+
+|field|	Example|	explain|
+|------------|--------|---------------|
+|code|	0|	 
+|msg|	"suc"|	code>0fail|
+|data|	as follows:|Order status(status)Explain：<br>INIT(0,"Initial order，No deal has not entered the handicap"),<br>NEW_(1,"New order，Unfinished business enters the market"),<br>FILLED(2,"Full deal"),<br>PART_FILLED(3,"Partial transaction"),<br>CANCELED(4,"Withdrawal of documents"),<br>PENDING_CANCEL(5,"Withdrawal of order"),<br>EXPIRED(6,"Abnormal order");|
 ```
 {
     "count":10,
-    "orderList":[
+    "resultList":[
         {
             "side":"BUY",
             "total_price":"0.10000000",
@@ -1249,11 +1250,11 @@ Return value:
             "countCoin":"btc",
             "source":1,
             "type":1,
-            "side_msg":"买入",
+            "side_msg":"Purchase",
             "volume":"1.000",
             "price":"0.10000000",
             "source_msg":"WEB",
-            "status_msg":"完全成交",
+            "status_msg":"Full deal",
             "deal_volume":"1.00000000",
             "id":424,
             "remain_volume":"0.00000000",
@@ -1268,11 +1269,11 @@ Return value:
             "countCoin":"btc",
             "source":1,
             "type":1,
-            "side_msg":"卖出",
+            "side_msg":"Sell out",
             "volume":"1.000",
             "price":"0.09900000",
             "source_msg":"WEB",
-            "status_msg":"完全成交",
+            "status_msg":"Full deal",
             "deal_volume":"1.00000000",
             "id":423,
             "remain_volume":"0.00000000",
@@ -1282,27 +1283,27 @@ Return value:
     ]
 }
 ```
----
-### <span id="33">获取杠杆资产余额</span>
 
-1. 接口地址: /open/api/margin/symbol/balance
-2. 接口说明: (get请求)资产余额
+### <span id="1">Balance of assets - margin</span>
 
-|参数|    填写类型|   说明|
+1. Interface address: /open/api/margin/symbol/balance
+2. Interface specification: (get request)Balance of the assets
+
+
+|parameter|	Fill in type|	Explain|
 |--------|--------|--------|
-|symbol |   必填| 币对名称
-|api_key|   必填| api_key|
-|time|  必填| 时间戳|
-|sign|  必填| 签名|
+|symbol |   Must fill|  btcusdt|
+|api_key|	Must fill|	api_key|
+|time|	Must fill|	time stamp|
+|sign|	Must fill|	autograph|
 
-返回值:
+Return value:
 
-|字段|    实例| 解释|
+|field|	Example|	explain|
 |--------|--------|--------|
-|code|  0|   |
-|msg|   "suc"|  code>0失败|
-|data| 如下:|
-        ```
+|code|	0|	 |
+|msg|	"suc"|	code>0fail|
+|data|	```
         {
             'baseTotalBalance':'8.89800000',//base总资产
             'baseNormalBalance':'8.89800000', //可用
@@ -1317,7 +1318,6 @@ Return value:
             'burstPrice':'1111',//爆仓价
          }
          ```
-
 
 
 ## <span id="b7">ws-api</span>
