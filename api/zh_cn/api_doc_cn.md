@@ -113,7 +113,7 @@ sign=md5(api_key1234567time12312312312137789654)
 
 ## <span id="a6">请求交互</span>
 
-REST访问的根URL：``` https://openapi.domain.com ```
+REST访问的根URL：``` https://openapi.wbfex.com ```
 
 ###  <span id="a7">请求</span>
 所有请求基于Https协议，请求头信息中Content-Type 需要统一设置为:'application/json’。
@@ -1429,7 +1429,7 @@ public class Main {
         params.put("sign", sign);
 
         /** http请求 */
-        String resultJson = get("https://openapi.domain.com/open/api/get_trades?symbol=btcusdt", params);
+        String resultJson = get("https://openapi.wbfex.com/open/api/get_trades?symbol=btcusdt", params);
         System.out.println(resultJson);
     }
 
@@ -1598,7 +1598,7 @@ public class WsTest {
     public static void main(String[] args) {
         try {
 //wsurl 
-            String url = "wss://ws.domain.com/kline-api/ws";
+            String url = "wss://ws.wbfex.com/kline-api/ws";
 //历史数据请求参数 
             String reqParam = "{"event":"req","params":{"channel":"market_btcusdt_trade_ticker","cb_id":"btcusdt","top":150}}";
 //订阅参数 
