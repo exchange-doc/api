@@ -211,6 +211,8 @@ Return value:
 
 1. Interface address:/open/api/v2/all_order
 2. Interface specification:(getrequest)Acquire full delegation
+3. startDate，endDate interval cannot exceed ten minutes
+4. No startDate, endDate, default first 10 minutes
 
 * Old interface/open/api/all_order It is still reserved, but not recommended
 
