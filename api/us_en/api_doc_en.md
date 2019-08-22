@@ -90,7 +90,7 @@ All REST requests must include the following headings:
 
 ## <span id="a4">Signature</span>
 Generate a string to be signed
-    -   [open-api Demo](#open-api-java)
+    -   [open-api Demo](https://github.com/exchange-doc/api/blob/master/demo/demo.java)
     
 1、Sort the parameters in ascending order of their parameter names in lexicographic order
 
