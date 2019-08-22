@@ -30,7 +30,7 @@
     -	[Acquisition of Trading Records](#10)
     -	[Get the latest transaction price of each pair of currencies](#11)
     -	[Search the depth of buying and selling](#12)
-    -	[Place orders in batches and withdraw designated orders in batches](#13)
+    -	[Place orders in batches and withdraw designated orders in batches(No recommendation, recommend v2)](#13)
     -	[Place orders in batches and withdraw designated orders in batches - V2](#27)
     -	[Get the current delegation](#14)
     -	[Obtain order details](#15)
