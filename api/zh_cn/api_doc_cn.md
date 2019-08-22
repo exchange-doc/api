@@ -17,7 +17,7 @@
         - [数字](#b3)
         - [限流 - REST API](#b4)
 - [业务API参考](#b5)
-  - [open-api](#b6) ([Java-Demo](#open-api-java))
+  - [open-api](#b6) ([调用 Demo](https://github.com/exchange-doc/api/blob/master/demo/demo.txt))
     -   [资产余额](#1)
     -   [获取全部委托](#2)
     -   [获取全部成交记录](#3)
