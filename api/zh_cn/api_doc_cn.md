@@ -91,7 +91,7 @@ API Key 和 Secret Key将由随机生成和提供
 ## <span id="a4">签名</span>
 
 生成待签名的字符串
-    -   [open-api Demo](#open-api-java)
+    -   [open-api Demo](https://github.com/exchange-doc/api/blob/master/demo/demo.java)
     
 1、先将参数以其参数名的字典序升序进行排序
 
