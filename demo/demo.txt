@@ -2,8 +2,6 @@
 ######################################### curl版本 #########################################
 curl -X POST \
   https://openapi.momoex.com/open/api/create_order \
-  -H 'Cache-Control: no-cache' \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
   -H 'Postman-Token: 957fef75-23a3-b30b-06b1-189676efc5ca' \
   -d 'api_key=441601d5be9e33df61149d7d0469d7d0&price=5&side=BUY&sign=06b52a16fcba335c52d713a47b5c600f&symbol=btcusdt&time=1566445997732&type=1&volume=1'
 
@@ -19,8 +17,6 @@ Request request = new Request.Builder()
   .url("https://openapi.momoex.com/open/api/create_order")
   .post(body)
   .addHeader("Content-Type", "application/x-www-form-urlencoded")
-  .addHeader("Cache-Control", "no-cache")
-  .addHeader("Postman-Token", "66d23fd7-4039-a386-3f4d-815c9526653d")
   .build();
 
 Response response = client.newCall(request).execute();
@@ -41,9 +37,7 @@ curl_setopt_array($curl, array(
   CURLOPT_CUSTOMREQUEST => "POST",
   CURLOPT_POSTFIELDS => "api_key=441601d5be9e33df61149d7d0469d7d0&price=5&side=BUY&sign=06b52a16fcba335c52d713a47b5c600f&symbol=btcusdt&time=1566445997732&type=1&volume=1",
   CURLOPT_HTTPHEADER => array(
-    "Cache-Control: no-cache",
-    "Content-Type: application/x-www-form-urlencoded",
-    "Postman-Token: 20bc230f-83ef-a438-42ca-657f37e5f35f"
+    "Content-Type: application/x-www-form-urlencoded"
   ),
 ));
 
@@ -69,9 +63,7 @@ conn = http.client.HTTPConnection("openapi,momoex,com")
 payload = "api_key=441601d5be9e33df61149d7d0469d7d0&price=5&side=BUY&sign=06b52a16fcba335c52d713a47b5c600f&symbol=btcusdt&time=1566445997732&type=1&volume=1"
 
 headers = {
-    'Content-Type': "application/x-www-form-urlencoded",
-    'Cache-Control': "no-cache",
-    'Postman-Token': "7b7504b0-1e70-d666-e32e-b83c75977f00"
+    'Content-Type': "application/x-www-form-urlencoded"
     }
 
 conn.request("POST", "open,api,create_order", payload, headers)
@@ -104,8 +96,6 @@ func main() {
   req, _ := http.NewRequest("POST", url, payload)
 
   req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
-  req.Header.Add("Cache-Control", "no-cache")
-  req.Header.Add("Postman-Token", "a5729dd4-2e77-a42a-74b8-6f7a743f381e")
 
   res, _ := http.DefaultClient.Do(req)
 
