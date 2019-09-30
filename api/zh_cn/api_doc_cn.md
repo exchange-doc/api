@@ -113,7 +113,7 @@ sign=md5(api_key1234567time12312312312137789654)
 
 ## <span id="a6">请求交互</span>
 
-REST访问的根URL：``` https://openapi.domain.com ```
+REST访问的根URL：``` openapi.bitzon.com```
 
 ###  <span id="a7">请求</span>
 所有请求基于Https协议，请求头信息中Content-Type 需要统一设置为:'application/x-www-form-urlencoded’。
