@@ -113,7 +113,7 @@ sign=md5(api_key1234567time12312312312137789654)
 
 ## <span id="a6">请求交互</span>
 
-REST访问的根URL：``` https://openapi.wbfex.com ```
+REST访问的根URL：``` https://openapi.wbf.info ```
 
 ###  <span id="a7">请求</span>
 所有请求基于Https协议，请求头信息中Content-Type 需要统一设置为:'application/json’。
@@ -1416,7 +1416,7 @@ public class Main {
             /** 去掉签名字段 */
             if (param.getKey().equals("sign")) {
                 continue;
-            }
+            }https://openapi.wbf.info 
 
             /** 空参数不参与签名 */
             if (param.getValue() != null) {
