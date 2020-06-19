@@ -113,7 +113,7 @@ sign=md5(api_key1234567time12312312312137789654)
 
 ## <span id="a6">请求交互</span>
 
-REST访问的根URL：``` https://openapi.wbf.info ```
+REST访问的根URL：``` https://openapi.wbf.live ```
 
 ###  <span id="a7">请求</span>
 所有请求基于Https协议，请求头信息中Content-Type 需要统一设置为:'application/json’。
@@ -179,7 +179,7 @@ REST API
 
 - 公共接口：我们通过IP限制公共接口的调用：每2秒最多6个请求。
 
-- 私人接口：我们通过用户ID限制私人接口的调用：每2秒最多6个请求。
+- 私人接口：我们通过用户ID限制私人接口的调用：每秒最多10个请求。
 
 - 某些接口的特殊限制在具体的接口上注明
 
@@ -944,25 +944,30 @@ REST API
 |------------|--------|---------------|
 |code|  0|   
 |msg|   "suc"|  code>0失败|
-|data|  如下:|
+|data|  如下:|订单状态(status)说明：<br>INIT(0,"初始订单，未成交未进入盘口"),<br>NEW_(1,"新订单，未成交进入盘口"),<br>FILLED(2,"完全成交"),<br>PART_FILLED(3,"部分成交"),<br>CANCELED(4,"已撤单"),<br>PENDING_CANCEL(5,"待撤单"),<br>EXPIRED(6,"异常订单");|
 ```
 {
     "order_info":{
         "id":343,
+        "type":3,
         "side":"sell",
         "side_msg":"卖出",
-        "created_at":"09-22 12:22",
+        "created_at":"1592461624033",
         "price":222.33,
         "volume":222.33,
         "deal_volume":222.33,
         "total_price":222.33,
         "fee":222.33,
+        "source":3,
+        "source_msg":"API",
+        "status":0, 
+        "status_msg":"未成交"
         "avg_price":222.33}
     }
     "trade_list":[
         {
             "id":343,
-            "created_at":"09-22 12:22",
+            "created_at":"1592461624033",
             "price":222.33,
             "volume":222.33,
             "deal_price":222.33,
@@ -970,7 +975,7 @@ REST API
         },
         {
             "id":345,
-            "created_at":"09-22 12:22",
+            "created_at":"1592461624033",
             "price":222.33,
             "volume":222.33,
             "deal_price":222.33,
@@ -1598,7 +1603,7 @@ public class WsTest {
     public static void main(String[] args) {
         try {
 //wsurl 
-            String url = "wss://ws.wbfex.com/kline-api/ws";
+            String url = "wss://ws.wbf.live/kline-api/ws";
 //历史数据请求参数 
             String reqParam = "{"event":"req","params":{"channel":"market_btcusdt_trade_ticker","cb_id":"btcusdt","top":150}}";
 //订阅参数 
