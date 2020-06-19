@@ -111,7 +111,7 @@ sign=md5(api_key1234567time12312312312137789654)
 
 ## <span id="a6">Request Process</span>
 
-The root URL for REST access：``` https://api.Exchange.com ```
+The root URL for REST access：``` https://openapi.wbf.live  ```
 
 ###  <span id="a7">Request</span>
 All requests are based on Https protocol, contentType in the request header must be uniformly set as: ‘application/json’.
@@ -948,19 +948,24 @@ Return value:
 |------------|--------|---------------|
 |code|	0|	 
 |msg|	"suc"|	code>0fail|
-|data|	as follows:|
+|data|	as follows:|Order status(status)Explain：<br>INIT(0,"Initial order，No deal has not entered the handicap"),<br>NEW_(1,"New order，Unfinished business enters the market"),<br>FILLED(2,"Full deal"),<br>PART_FILLED(3,"Partial transaction"),<br>CANCELED(4,"Withdrawal of documents"),<br>PENDING_CANCEL(5,"Withdrawal of order"),<br>EXPIRED(6,"Abnormal order");|
 ```
 {
     "order_info":{
         "id":343,
+        "type":3,
         "side":"sell",
-        "side_msg":"Sell out",
-        "created_at":"09-22 12:22",
+        "side_msg":"sell",
+        "created_at":"1592461624033",
         "price":222.33,
         "volume":222.33,
         "deal_volume":222.33,
         "total_price":222.33,
         "fee":222.33,
+        "source":3,
+        "source_msg":"API",
+        "status":0, 
+        "status_msg":"unsettled",
         "avg_price":222.33}
     }
     "trade_list":[
@@ -1607,7 +1612,7 @@ public class WsTest {
     public static void main(String[] args) {
         try {
 //wsurl 
-            String url = "wss://ws.Exchange.com/kline-api/ws";
+            String url = "wss://ws.wbf.live/kline-api/ws";
 //Historical data request parameters 
             String reqParam = "{"event":"req","params":{"channel":"market_btcusdt_trade_ticker","cb_id":"btcusdt","top":150}}";
 //Subscription parameters 
