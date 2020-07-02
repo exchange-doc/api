@@ -86,7 +86,6 @@ API Key 和 Secret Key将由随机生成和提供
 - ACCESS-KEY API KEY作为一个字符串。
 - ACCESS-SIGN 使用base64编码签名（请参阅签名消息）。
 - ACCESS-TIMESTAMP 作为您的请求的时间戳。
-- 所有请求都应该含有application/json类型内容，并且是有效的JSON。
 
 ## <span id="a4">签名</span>
 
@@ -116,7 +115,7 @@ sign=md5(api_key1234567time12312312312137789654)
 REST访问的根URL：``` https://openapi.wbf.live ```
 
 ###  <span id="a7">请求</span>
-所有请求基于Https协议，请求头信息中Content-Type 需要统一设置为:'application/json’。
+所有请求基于Https协议，请求头信息中Content-Type 需要统一设置为:'application/x-www-form-urlencoded’。
 
 **请求交互说明**
 
@@ -961,7 +960,7 @@ REST API
         "source":3,
         "source_msg":"API",
         "status":0, 
-        "status_msg":"未成交"
+        "status_msg":"未成交",
         "avg_price":222.33}
     }
     "trade_list":[

@@ -86,7 +86,6 @@ All REST requests must include the following headings:
 - ACCESS-KEY API Key as a string.
 - ACCESS-SIGN uses base64-encoded signatures (see Signed Messages).
 - ACCESS-TIMESTAMP is the timestamp of your request.header MUST be number of seconds since Unix Epoch in UTC. Decimal values are allowed.
-- All requests should contain content like application/json and be valid JSON.
 
 ## <span id="a4">Signature</span>
 Generate a string to be signed
@@ -114,7 +113,7 @@ sign=md5(api_key1234567time12312312312137789654)
 The root URL for REST access：``` https://openapi.wbf.live  ```
 
 ###  <span id="a7">Request</span>
-All requests are based on Https protocol, contentType in the request header must be uniformly set as: ‘application/json’.
+All requests are based on Https protocol, contentType in the request header must be uniformly set as: ‘application/x-www-form-urlencoded’.
 
 **Request Process Descriptions**
 
