@@ -141,9 +141,41 @@ HTTP status code 200 indicates a successful response and may contain content. If
 
 - 429 Too Many Requests
 
-- 500 Internal Server Error
+- 500 Internal Server Error - We had a problem with our server
 
-We had a problem with our server
+Upon the code in response body, below is the reference:
+code|    describe|   memo|
+|--------|--------|--------|
+|0|   success| code=0 success code >0 failure|
+|1|  system internal error| |
+|2|  invalid parameter| |
+|3|  user need login| |
+|4|  insufficient| |
+|5|  place order failed| |
+|6|  volume below the minimum limitation| |
+|7|  volume above the maximum limitation| |
+|8|  order cancellation failure| |
+|9|  trading not allowed| |
+|11|  sms code invalid or expired| |
+|12|  unknown symbol| |
+|14|  invalid verification code| |
+|19|  insufficient balance| |
+|21|  google verification code invalid or expired |  |
+|22|  order not exist| |
+|25|  price or volume exceeds limitation| |
+|26|  user not exist| |
+|28|  e-mail verification code invalid or expired| |
+|31|  price or amount below the minimum limitation| |
+|32|  price above limit-up price| |
+|33|  volume above the maximum limitation| |
+|34|  exceed placing order frequency limitation| |
+|10069|  market order not allowed| |
+|100100|  invalid user or password| |
+|100101|  user locked for two hours| |
+|100102|  user account locked| |
+|101115|  user total trade volume exceeds the maximum volume limitation per day| |
+|101117|  market order not allowed| |
+|101999|  symbol is not open| |
 
 ###  <span  id="a8">Pagination</span>
 
